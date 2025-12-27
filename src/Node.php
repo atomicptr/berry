@@ -4,7 +4,7 @@ namespace HyperKit\Html;
 
 use HyperKit\Html\Traits\HasAttributes;
 
-abstract class Node
+abstract class Node implements Renderable
 {
     use HasAttributes;
 

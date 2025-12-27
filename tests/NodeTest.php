@@ -1,9 +1,17 @@
 <?php
 
+use HyperKit\Html\Renderable;
+
 use function HyperKit\Html\Html5\b;
+use function HyperKit\Html\Html5\body;
 use function HyperKit\Html\Html5\div;
+use function HyperKit\Html\Html5\footer;
+use function HyperKit\Html\Html5\h1;
+use function HyperKit\Html\Html5\head;
+use function HyperKit\Html\Html5\html;
 use function HyperKit\Html\Html5\img;
 use function HyperKit\Html\Html5\li;
+use function HyperKit\Html\Html5\title;
 use function HyperKit\Html\Html5\ul;
 
 test('Node render simple div example', function () {
@@ -68,4 +76,30 @@ test('Add children conditionally', function () {
             ->childWhen(fn() => true, li()->text('This should too'))
             ->toString()
     )->toBe('<ul><li>This should</li><li>This should too</li></ul>');
+});
+
+class IndexView
+{
+    public static function render(): Renderable
+    {
+        return html()
+            ->lang('en')
+            ->child(head()
+                ->child(title()->text('Index Page')))
+            ->child(body()
+                ->child(
+                    div()
+                        ->class('container')
+                        ->child(
+                            h1()->text('Index Page')
+                        )
+                )
+                ->child(
+                    footer()->text('This is a footer')
+                ));
+    }
+}
+
+test('README.md example', function () {
+    expect(IndexView::render()->toString())->toBe('<!DOCTYPE html><html lang="en"><head><title>Index Page</title></head><body><div class="container"><h1>Index Page</h1></div><footer>This is a footer</footer></body></html>');
 });

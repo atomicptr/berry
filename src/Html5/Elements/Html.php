@@ -19,4 +19,9 @@ class Html extends Node
         $buffer[] = '<!DOCTYPE html>';
         parent::renderIntoBuffer($buffer);
     }
+
+    public function lang(string $lang): static
+    {
+        return $this->attr('lang', $lang);
+    }
 }
