@@ -2,12 +2,14 @@
 
 namespace HyperKit\Html\Html5\Elements;
 
+use HyperKit\Html\Html5\Traits\HasHref;
 use HyperKit\Html\Html5\Traits\HasSrc;
 use HyperKit\Html\Html5\BaseNode;
 
 class Img extends BaseNode
 {
     use HasSrc;
+    use HasHref;
 
     protected static function tagName(): string
     {

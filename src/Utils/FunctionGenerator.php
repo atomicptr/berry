@@ -19,6 +19,8 @@ final readonly class FunctionGenerator
         $buffer[] = "\n";
         $buffer[] = "namespace {$namespace};\n";
         $buffer[] = "\n";
+        $buffer[] = "// This file was automatically generated and should not be edited manually\n";
+        $buffer[] = "\n";
 
         $funcs = [];
 

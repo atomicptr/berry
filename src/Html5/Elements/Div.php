@@ -2,13 +2,11 @@
 
 namespace HyperKit\Html\Html5\Elements;
 
-use HyperKit\Html\Contracts\HasChildrenContract;
-use HyperKit\Html\Contracts\HasTextContract;
 use HyperKit\Html\Html5\BaseNode;
 use HyperKit\Html\Traits\HasChildren;
 use HyperKit\Html\Traits\HasText;
 
-class Div extends BaseNode implements HasChildrenContract, HasTextContract
+class Div extends BaseNode
 {
     use HasChildren;
     use HasText;

@@ -9,6 +9,9 @@ trait HasChildren
     /** @var Node[] */
     protected array $children = [];
 
+    /**
+     * @param Node|callable(): Node|null $child
+     */
     public function child(Node|callable|null $child): self
     {
         if ($child === null) {

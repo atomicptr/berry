@@ -12,7 +12,8 @@
         ]
     },
     "scripts": {
-        "gen-functions": "php bin/gen-functions"
+        "gen-functions": "php bin/gen-functions",
+        "test": "XDEBUG_MODE=coverage php vendor/bin/pest --coverage"
     },
     "authors": [
         {

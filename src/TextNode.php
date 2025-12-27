@@ -13,6 +13,7 @@ final class TextNode extends Node
 
     /**
      * @return never
+     * @codeCoverageIgnore
      */
     protected static function tagName(): string
     {
