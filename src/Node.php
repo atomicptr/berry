@@ -31,6 +31,31 @@ abstract class Node implements Renderable
     }
 
     /**
+     * @param callable(static): static $fn
+     */
+    public function map(callable $fn): static
+    {
+        return $fn($this);
+    }
+
+    /**
+     * @param (callable(): bool)|bool $condition
+     * @param callable(static): static $fn
+     */
+    public function mapWhen(callable|bool $condition, callable $fn): static
+    {
+        if (is_callable($condition)) {
+            return $this->mapWhen($condition(), $fn);
+        }
+
+        if ($condition) {
+            return $fn($this);
+        }
+
+        return $this;
+    }
+
+    /**
      * @param string[] $buffer
      */
     public function renderInto(array &$buffer): void

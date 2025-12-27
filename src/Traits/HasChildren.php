@@ -12,7 +12,7 @@ trait HasChildren
     /**
      * @param Renderable|(callable(): Renderable)|null $child
      */
-    public function child(Renderable|callable|null $child): self
+    public function child(Renderable|callable|null $child): static
     {
         if ($child === null) {
             return $this;
@@ -37,20 +37,25 @@ trait HasChildren
      * @param (callable(): bool)|bool $condition
      * @param Renderable|(callable(): Renderable)|null $child
      */
-    public function childWhen(callable|bool $condition, Renderable|callable|null $child): self
+    public function childWhen(callable|bool $condition, Renderable|callable|null $child): static
     {
         if (is_callable($condition)) {
-            if ($condition()) {
-                return $this->child($child);
-            }
-
-            return $this;
+            return $this->childWhen($condition(), $child);
         }
 
         if ($condition) {
             return $this->child($child);
         }
 
+        return $this;
+    }
+
+    /**
+     * @param Renderable[] $children
+     */
+    public function children(array $children): static
+    {
+        array_push($this->children, ...$children);
         return $this;
     }
 }
