@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace HyperKit\Html\Html5\Elements;
+namespace Berry\Html5\Elements;
 
-use HyperKit\Html\Node;
+use Berry\Node;
 
 class Meta extends Node
 {

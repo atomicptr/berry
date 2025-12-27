@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace HyperKit\Html;
+namespace Berry;
 
 interface Renderable
 {

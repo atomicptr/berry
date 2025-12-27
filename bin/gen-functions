@@ -3,9 +3,9 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-\HyperKit\Html\Utils\FunctionGenerator::generate(
+\Berry\Utils\FunctionGenerator::generate(
     __DIR__ . '/../src/Html5/Elements',
-    'HyperKit\Html\Html5',
-    'HyperKit\Html\Html5\Elements',
+    'Berry\Html5',
+    'Berry\Html5\Elements',
     __DIR__ . '/../src/Html5/functions.php',
 );

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace HyperKit\Html\Html5\Elements;
+namespace Berry\Html5\Elements;
 
-use HyperKit\Html\Traits\HasChildren;
-use HyperKit\Html\Traits\HasText;
-use HyperKit\Html\Node;
+use Berry\Traits\HasChildren;
+use Berry\Traits\HasText;
+use Berry\Node;
 
 class Style extends Node
 {

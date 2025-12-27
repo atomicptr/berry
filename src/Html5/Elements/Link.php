@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace HyperKit\Html\Html5\Elements;
+namespace Berry\Html5\Elements;
 
-use HyperKit\Html\Html5\Traits\HasHref;
-use HyperKit\Html\Html5\Traits\HasRel;
-use HyperKit\Html\Html5\BaseNode;
+use Berry\Html5\Traits\HasHref;
+use Berry\Html5\Traits\HasRel;
+use Berry\Html5\BaseNode;
 
 class Link extends BaseNode
 {

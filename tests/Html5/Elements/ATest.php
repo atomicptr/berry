@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-use function HyperKit\Html\Html5\a;
+use function Berry\Html5\a;
 
 test('a renders basic', function () {
     expect(a()->toString())->toBe('<a></a>');

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace HyperKit\Html\Html5;
+namespace Berry\Html5;
 
-use HyperKit\Html\Html5\Traits\HasGlobalAttributes;
-use HyperKit\Html\Node;
+use Berry\Html5\Traits\HasGlobalAttributes;
+use Berry\Node;
 
 abstract class BaseNode extends Node
 {

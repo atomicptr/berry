@@ -1,18 +1,18 @@
 <?php
 
-use HyperKit\Html\Renderable;
+use Berry\Renderable;
 
-use function HyperKit\Html\Html5\b;
-use function HyperKit\Html\Html5\body;
-use function HyperKit\Html\Html5\div;
-use function HyperKit\Html\Html5\footer;
-use function HyperKit\Html\Html5\h1;
-use function HyperKit\Html\Html5\head;
-use function HyperKit\Html\Html5\html;
-use function HyperKit\Html\Html5\img;
-use function HyperKit\Html\Html5\li;
-use function HyperKit\Html\Html5\title;
-use function HyperKit\Html\Html5\ul;
+use function Berry\Html5\b;
+use function Berry\Html5\body;
+use function Berry\Html5\div;
+use function Berry\Html5\footer;
+use function Berry\Html5\h1;
+use function Berry\Html5\head;
+use function Berry\Html5\html;
+use function Berry\Html5\img;
+use function Berry\Html5\li;
+use function Berry\Html5\title;
+use function Berry\Html5\ul;
 
 test('Node render simple div example', function () {
     $res = div()

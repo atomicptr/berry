@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace HyperKit\Html\Html5\Traits;
+namespace Berry\Html5\Traits;
 
-use HyperKit\Html\Traits\HasAttributes;
+use Berry\Traits\HasAttributes;
 
 trait HasSrc
 {

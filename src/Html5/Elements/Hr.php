@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace HyperKit\Html\Html5\Elements;
+namespace Berry\Html5\Elements;
 
-use HyperKit\Html\Html5\BaseNode;
+use Berry\Html5\BaseNode;
 
 class Hr extends BaseNode
 {

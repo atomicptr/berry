@@ -1,11 +1,11 @@
 {
-    "name": "hyperkit/html",
+    "name": "berry/html",
     "description": "No dependency, fast PHP eDSL for writing HTML",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "HyperKit\\Html\\": "src/"
+            "Berry\\": "src/"
         },
         "files": [
             "src/Html5/functions.php"

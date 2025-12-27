@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace HyperKit\Html\Html5\Elements;
+namespace Berry\Html5\Elements;
 
-use HyperKit\Html\Html5\Enums\FormMethod;
-use HyperKit\Html\Html5\BaseNode;
-use HyperKit\Html\Traits\HasChildren;
+use Berry\Html5\Enums\FormMethod;
+use Berry\Html5\BaseNode;
+use Berry\Traits\HasChildren;
 
 class Form extends BaseNode
 {

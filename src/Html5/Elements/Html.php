@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace HyperKit\Html\Html5\Elements;
+namespace Berry\Html5\Elements;
 
-use HyperKit\Html\Traits\HasChildren;
-use HyperKit\Html\Node;
+use Berry\Traits\HasChildren;
+use Berry\Node;
 
 class Html extends Node
 {

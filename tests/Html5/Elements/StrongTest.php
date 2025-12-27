@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-use function HyperKit\Html\Html5\strong;
+use function Berry\Html5\strong;
 
 test('strong renders with text', function () {
     expect(strong()->text('strong')->toString())->toBe('<strong>strong</strong>');

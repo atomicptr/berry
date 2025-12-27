@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace HyperKit\Html;
+namespace Berry;
 
-use HyperKit\Html\Traits\HasAttributes;
+use Berry\Traits\HasAttributes;
 
 abstract class Node implements Renderable
 {
