@@ -19,7 +19,7 @@ abstract class Node implements Renderable
     protected array $flags = [];
 
     /**
-     * @var Node[]
+     * @var Renderable[]
      */
     protected array $children = [];
 
@@ -33,7 +33,7 @@ abstract class Node implements Renderable
     /**
      * @param string[] $buffer
      */
-    protected function renderIntoBuffer(array &$buffer): void
+    public function renderInto(array &$buffer): void
     {
         $tagName = static::tagName();
         $buffer[] = "<{$tagName}";
@@ -56,7 +56,7 @@ abstract class Node implements Renderable
         $buffer[] = '>';
 
         foreach ($this->children as $child) {
-            $child->renderIntoBuffer($buffer);
+            $child->renderInto($buffer);
         }
 
         $buffer[] = "</{$tagName}>";
@@ -65,7 +65,7 @@ abstract class Node implements Renderable
     public function toString(): string
     {
         $parts = [];
-        $this->renderIntoBuffer($parts);
+        $this->renderInto($parts);
         return implode('', $parts);
     }
 }

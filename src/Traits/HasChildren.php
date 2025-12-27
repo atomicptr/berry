@@ -2,17 +2,17 @@
 
 namespace Berry\Traits;
 
-use Berry\Node;
+use Berry\Renderable;
 
 trait HasChildren
 {
-    /** @var Node[] */
+    /** @var Renderable[] */
     protected array $children = [];
 
     /**
-     * @param Node|callable(): Node|null $child
+     * @param Renderable|(callable(): Renderable)|null $child
      */
-    public function child(Node|callable|null $child): self
+    public function child(Renderable|callable|null $child): self
     {
         if ($child === null) {
             return $this;
@@ -25,7 +25,7 @@ trait HasChildren
                 return $this;
             }
 
-            assert($child instanceof Node);
+            assert($child instanceof Renderable);
         }
 
         $this->children[] = $child;
@@ -33,7 +33,11 @@ trait HasChildren
         return $this;
     }
 
-    public function childWhen(callable|bool $condition, Node|callable|null $child): self
+    /**
+     * @param (callable(): bool)|bool $condition
+     * @param Renderable|(callable(): Renderable)|null $child
+     */
+    public function childWhen(callable|bool $condition, Renderable|callable|null $child): self
     {
         if (is_callable($condition)) {
             if ($condition()) {

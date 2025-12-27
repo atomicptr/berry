@@ -20,7 +20,10 @@ final class TextNode extends Node
         throw new RuntimeException("Text nodes don't have a tag");
     }
 
-    protected function renderIntoBuffer(array &$buffer): void
+    /**
+     * @param string[] $buffer
+     */
+    public function renderInto(array &$buffer): void
     {
         if ($this->raw) {
             $buffer[] = $this->text;

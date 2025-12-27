@@ -7,6 +7,9 @@ use Stringable;
 
 trait HasText
 {
+    /**
+     * @param Stringable|string|int|float|bool|(callable(): string)|null $text
+     */
     public function text(Stringable|string|int|float|bool|callable|null $text, bool $raw = false): static
     {
         if ($text === null) {
@@ -28,6 +31,9 @@ trait HasText
         return $this;
     }
 
+    /**
+     * @param Stringable|string|int|float|bool|(callable(): string)|null $text
+     */
     public function raw(Stringable|string|int|float|bool|callable|null $text): static
     {
         return $this->text($text, true);

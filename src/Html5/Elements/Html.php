@@ -14,10 +14,13 @@ class Html extends Node
         return 'html';
     }
 
-    protected function renderIntoBuffer(array &$buffer): void
+    /**
+     * @param string[] $buffer
+     */
+    public function renderInto(array &$buffer): void
     {
         $buffer[] = '<!DOCTYPE html>';
-        parent::renderIntoBuffer($buffer);
+        parent::renderInto($buffer);
     }
 
     public function lang(string $lang): static

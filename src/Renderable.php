@@ -4,5 +4,10 @@ namespace Berry;
 
 interface Renderable
 {
+    /**
+     * @param string[] $buffer
+     */
+    public function renderInto(array &$buffer): void;
+
     public function toString(): string;
 }
