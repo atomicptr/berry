@@ -30,45 +30,48 @@ final class BerryInspector implements Inspector
 
         $callerLabel = basename($callerFile) . ($callerLine !== '' ? ":$callerLine" : '');
 
-        return div()
-            ->class('berry-debug-root')
-            ->child($this->renderStyles())
-            // header
+        return new InspectorRoot()
             ->child(
                 div()
-                    ->class('berry-debug-header')
+                    ->class('berry-debug-root')
+                    ->child($this->renderStyles())
+                    // header
                     ->child(
                         div()
-                            ->class('berry-debug-controls')
-                            ->child(span()->class('berry-debug-dot berry-debug-red'))
-                            ->child(span()->class('berry-debug-dot berry-debug-yellow'))
-                            ->child(span()->class('berry-debug-dot berry-debug-green'))
-                            ->child(span()->class('berry-debug-title')->text('BERRY INSPECTOR'))
-                    )
-                    ->child(span()->class('berry-debug-caller')->text($callerLabel)),
-            )
-            // node tree
-            ->child(
-                div()
-                    ->class('berry-debug-body')
-                    ->child($this->renderTreeNode($data))
-            )
-            // stacktrace
-            ->child(
-                details()
-                    ->class('berry-debug-trace')
-                    ->child(summary()->text('Trace (' . count($trace) . ')'))
-                    ->child(
-                        div()
-                            ->class('berry-debug-trace-scroll')
+                            ->class('berry-debug-header')
                             ->child(
-                                ul()
-                                    ->class('berry-debug-trace-list')
-                                    ->children(array_map([$this, 'renderTraceItem'], $trace))
+                                div()
+                                    ->class('berry-debug-controls')
+                                    ->child(span()->class('berry-debug-dot berry-debug-red'))
+                                    ->child(span()->class('berry-debug-dot berry-debug-yellow'))
+                                    ->child(span()->class('berry-debug-dot berry-debug-green'))
+                                    ->child(span()->class('berry-debug-title')->text('BERRY INSPECTOR'))
                             )
-                    ),
-            )
-            ->child($this->renderScripts());
+                            ->child(span()->class('berry-debug-caller')->text($callerLabel)),
+                    )
+                    // node tree
+                    ->child(
+                        div()
+                            ->class('berry-debug-body')
+                            ->child($this->renderTreeNode($data))
+                    )
+                    // stacktrace
+                    ->child(
+                        details()
+                            ->class('berry-debug-trace')
+                            ->child(summary()->text('Trace (' . count($trace) . ')'))
+                            ->child(
+                                div()
+                                    ->class('berry-debug-trace-scroll')
+                                    ->child(
+                                        ul()
+                                            ->class('berry-debug-trace-list')
+                                            ->children(array_map([$this, 'renderTraceItem'], $trace))
+                                    )
+                            ),
+                    )
+                    ->child($this->renderScripts())
+            );
     }
 
     /**

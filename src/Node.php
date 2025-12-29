@@ -2,6 +2,7 @@
 
 namespace Berry;
 
+use Berry\Contracts\ExcludeFromArrayRepresentation;
 use Berry\Traits\HasAttributes;
 use Berry\Traits\HasExtensionMethods;
 
@@ -102,12 +103,16 @@ abstract class Node implements Renderable
 
     public function toArray(): array
     {
+        $class = static::class;
+
+        assert(!($this instanceof ExcludeFromArrayRepresentation), "$class can't be turned into an array because it was explicity excluded");
+
         return [
-            static::class,
+            $class,
             array_merge($this->attributes, $this->flags),
             array_map(
                 fn(Renderable $child) => $child->toArray(),
-                array_filter($this->children, fn(Renderable|null $child) => $child !== null)
+                array_filter($this->children, fn(Renderable|null $child) => $child !== null && !($child instanceof ExcludeFromArrayRepresentation))
             ),
         ];
     }
