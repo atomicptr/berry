@@ -51,4 +51,9 @@ class Input extends BaseNode
     {
         return $this->attr('autocomplete', $value ? 'on' : 'off');
     }
+
+    public function placeholder(string $placeholder): static
+    {
+        return $this->attr('placeholder', $placeholder);
+    }
 }
