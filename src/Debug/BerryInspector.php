@@ -123,13 +123,14 @@ final class BerryInspector implements Inspector
 
         return div()
             ->class('berry-debug-branch berry-debug-open')
-            ->child(span()
-                ->class('berry-debug-label')
-                ->text('props'))
             ->child(div()
                 ->class('berry-debug-content')
                 ->children(
-                    array_map(fn(string $k, string|int|float|bool $v) => $this->renderLeaf($k, $v), array_keys($props), $props)
+                    array_map(
+                        fn(string $k, string|int|float|bool $v) => $this->renderLeaf($k, $v),
+                        array_keys($props),
+                        $props
+                    )
                 ));
     }
 
@@ -152,47 +153,198 @@ final class BerryInspector implements Inspector
 
     private function renderStyles(): Renderable
     {
-        return style()->raw('
+        return style()->raw(<<<CSS
+            /** Berry Inspector Styling, based on Catppuccin Moccha */
             .berry-debug-root {
-                --base: #1e1e2e; --mantle: #181825; --crust: #11111b;
-                --surface0: #313244; --text: #cdd6f4; --blue: #89b4fa;
-                --green: #a6e3a1; --teal: #94e2d5; --peach: #fab387;
-                --mauve: #cba6f7; --red: #f38ba8; --yellow: #f9e2af;
+                --base: #1e1e2e;
+                --mantle: #181825;
+                --crust: #11111b;
+                --surface0: #313244;
+                --text: #cdd6f4;
+                --blue: #89b4fa;
+                --green: #a6e3a1;
+                --teal: #94e2d5;
+                --peach: #fab387;
+                --mauve: #cba6f7;
+                --red: #f38ba8;
+                --yellow: #f9e2af;
                 --overlay0: #6c7086;
-                background: var(--base); color: var(--text); font-family: "JetBrains Mono", monospace;
-                font-size: 11px; border-radius: 6px; border: 1px solid var(--surface0); margin: 10px; overflow: hidden; line-height: 1.3;
+                background: var(--base);
+                color: var(--text);
+                font-family: "JetBrains Mono", monospace;
+                font-size: 11px;
+                border-radius: 6px;
+                border: 1px solid var(--surface0);
+                margin: 10px;
+                overflow: hidden;
+                line-height: 1.3;
             }
-            .berry-debug-header { background: var(--mantle); padding: 4px 10px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--surface0); }
-            .berry-debug-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 2px; }
-            .berry-debug-red { background: var(--red); } .berry-debug-yellow { background: var(--yellow); } .berry-debug-green { background: var(--green); }
-            .berry-debug-title { color: var(--mauve); font-weight: bold; font-size: 9px; letter-spacing: 0.5px; margin-left: 5px; }
-            .berry-debug-caller { color: var(--overlay0); font-size: 10px; }
-            .berry-debug-body { padding: 8px; }
-            .berry-debug-branch { position: relative; padding-left: 14px; }
-            .berry-debug-content { display: none; border-left: 1px solid var(--surface0); margin-left: 2px; padding-left: 8px; }
-            .berry-debug-open > .berry-debug-content { display: block; }
-            .berry-debug-toggle { position: absolute; left: 0; cursor: pointer; width: 10px; height: 10px; top: 1px; }
-            .berry-debug-toggle::before { content: "▶"; font-size: 7px; color: var(--overlay0); display: inline-block; transition: transform 0.1s; }
-            .berry-debug-open > .berry-debug-toggle::before { transform: rotate(90deg); }
-            .berry-debug-class { color: var(--blue); font-weight: bold; cursor: pointer; }
-            .berry-debug-label { color: var(--mauve); font-size: 9px; text-transform: uppercase; cursor: pointer; opacity: 0.8; }
-            .berry-debug-key { color: var(--teal); margin-right: 4px; }
-            .berry-debug-string { color: var(--green); }
-            .berry-debug-bool { color: var(--peach); }
-            .berry-debug-trace { background: var(--mantle); border-top: 1px solid var(--surface0); }
-            .berry-debug-trace summary { padding: 3px 10px; cursor: pointer; font-size: 9px; color: var(--overlay0); }
-            .berry-debug-trace-scroll { max-height: 150px; overflow-y: auto; background: var(--crust); }
-            .berry-debug-trace-list { list-style: none; padding: 6px 10px; margin: 0; }
-            .berry-debug-trace-list li { margin-bottom: 2px; white-space: nowrap; font-size: 10px; }
-            .berry-debug-trace-app { color: var(--teal); }
-            .berry-debug-trace-vendor { color: var(--overlay0); opacity: 0.5; }
-            .berry-debug-trace-func { color: var(--mauve); opacity: 0.8; }
-        ');
+
+            .berry-debug-header {
+                background: var(--mantle);
+                padding: 4px 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var(--surface0);
+            }
+
+            .berry-debug-dot {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                display: inline-block;
+                margin-right: 2px;
+            }
+
+            .berry-debug-red {
+                background: var(--red);
+            }
+
+            .berry-debug-yellow {
+                background: var(--yellow);
+            }
+
+            .berry-debug-green {
+                background: var(--green);
+            }
+
+            .berry-debug-title {
+                color: var(--mauve);
+                font-weight: bold;
+                font-size: 9px;
+                letter-spacing: 0.5px;
+                margin-left: 5px;
+            }
+
+            .berry-debug-caller {
+                color: var(--overlay0);
+                font-size: 10px;
+            }
+
+            .berry-debug-body {
+                padding: 8px;
+            }
+
+            .berry-debug-branch {
+                position: relative;
+                padding-left: 14px;
+            }
+
+            .berry-debug-content {
+                display: none;
+                border-left: 1px solid var(--surface0);
+                margin-left: 2px;
+                padding-left: 8px;
+            }
+
+            .berry-debug-content:has(> .berry-debug-leaf) {
+                border-left: 0px;
+                padding-left: 0px !important;
+            }
+
+            .berry-debug-open > .berry-debug-content {
+                display: block;
+            }
+
+            .berry-debug-toggle {
+                position: absolute;
+                left: 0;
+                cursor: pointer;
+                width: 12px;
+                height: 12px;
+                top: 0px;
+            }
+
+            .berry-debug-toggle::before {
+                content: "+";
+                font-size: 12px;
+                color: var(--overlay0);
+                display: inline-block;
+            }
+
+            .berry-debug-open > .berry-debug-toggle::before {
+                content: "-";
+            }
+
+            .berry-debug-class {
+                color: var(--blue);
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .berry-debug-label {
+                color: var(--mauve);
+                font-size: 9px;
+                text-transform: uppercase;
+                cursor: pointer;
+                opacity: 0.8;
+            }
+
+            .berry-debug-key {
+                color: var(--teal);
+                margin-right: 4px;
+            }
+
+            .berry-debug-string {
+                color: var(--green);
+            }
+
+            .berry-debug-bool {
+                color: var(--peach);
+            }
+
+            .berry-debug-trace {
+                background: var(--mantle);
+                border-top: 1px solid var(--surface0);
+                margin-bottom: 0px;
+            }
+
+            .berry-debug-trace summary {
+                padding: 3px 10px;
+                cursor: pointer;
+                font-size: 9px;
+                color: var(--overlay0);
+                margin-bottom: 0px !important;
+            }
+
+            .berry-debug-trace-scroll {
+                max-height: 150px;
+                overflow-y: auto;
+                background: var(--crust);
+            }
+
+            .berry-debug-trace-list {
+                list-style: none;
+                padding: 6px 10px;
+                margin: 0;
+            }
+
+            .berry-debug-trace-list li {
+                margin-bottom: 2px;
+                white-space: nowrap;
+                font-size: 10px;
+            }
+
+            .berry-debug-trace-app {
+                color: var(--teal);
+            }
+
+            .berry-debug-trace-vendor {
+                color: var(--overlay0);
+                opacity: 0.5;
+            }
+
+            .berry-debug-trace-func {
+                color: var(--mauve);
+                opacity: 0.8;
+            }
+            CSS);
     }
 
     private function renderScripts(): Renderable
     {
-        return script()->raw('
+        return script()->raw(<<<JS
             document.querySelectorAll(".berry-debug-root .berry-debug-toggle, .berry-debug-root .berry-debug-class, .berry-debug-root .berry-debug-label").forEach(el => {
                 el.onclick = (e) => {
                     e.stopPropagation();
@@ -200,6 +352,6 @@ final class BerryInspector implements Inspector
                     if (branch) branch.classList.toggle("berry-debug-open");
                 };
             });
-        ');
+            JS);
     }
 }

@@ -4,7 +4,7 @@ namespace Berry;
 
 /**
  * @phpstan-type RenderableArrayRepr array{
- *      0: class-string,
+ *      0: string,
  *      1: array<string, string|int|float|bool>,
  *      2: array<array{
  *          0: string,
