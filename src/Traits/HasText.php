@@ -8,6 +8,8 @@ use Stringable;
 trait HasText
 {
     /**
+     * Adds a text node to the element
+     *
      * @param Stringable|string|int|float|bool|(callable(): string)|null $text
      */
     public function text(Stringable|string|int|float|bool|callable|null $text, bool $raw = false): static
@@ -32,6 +34,8 @@ trait HasText
     }
 
     /**
+     * Adds a raw text node to the element
+     *
      * @param Stringable|string|int|float|bool|(callable(): string)|null $text
      */
     public function raw(Stringable|string|int|float|bool|callable|null $text): static
