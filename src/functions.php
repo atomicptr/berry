@@ -15,5 +15,5 @@ function text(string $text, bool $raw = false): TextNode
  */
 function fragment(Renderable ...$children): Fragment
 {
-    return new Fragment()->children($children);
+    return (new Fragment())->children($children);
 }
