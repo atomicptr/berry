@@ -2,18 +2,13 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\BaseNode;
-use Berry\Traits\HasChildren;
-use Berry\Traits\HasText;
+use Berry\Html5\HtmlTag;
 
-class Button extends BaseNode
+class Button extends HtmlTag
 {
-    use HasChildren;
-    use HasText;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'button';
+        parent::__construct('button');
     }
 
     public function type(string $value): static
@@ -31,8 +26,12 @@ class Button extends BaseNode
         return $this->attr('value', $value);
     }
 
-    public function disabled(): static
+    public function disabled(bool $disabled = true): static
     {
+        if (!$disabled) {
+            return $this;
+        }
+
         return $this->flag('disabled');
     }
 }

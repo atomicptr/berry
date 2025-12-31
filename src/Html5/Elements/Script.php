@@ -2,27 +2,38 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\Traits\HasSrc;
-use Berry\Html5\BaseNode;
 use Berry\Traits\HasText;
+use Berry\Tag;
 
-class Script extends BaseNode
+class Script extends Tag
 {
     use HasText;
-    use HasSrc;
 
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'script';
+        parent::__construct('script');
     }
 
-    public function async(): static
+    public function src(string $src): static
     {
+        return $this->attr('src', $src);
+    }
+
+    public function async(bool $async = true): static
+    {
+        if (!$async) {
+            return $this;
+        }
+
         return $this->flag('async');
     }
 
-    public function defer(): static
+    public function defer(bool $defer = true): static
     {
+        if (!$defer) {
+            return $this;
+        }
+
         return $this->flag('defer');
     }
 

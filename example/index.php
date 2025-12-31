@@ -3,7 +3,8 @@
 require '../vendor/autoload.php';
 
 use Berry\Html5\Enums\Rel;
-use Berry\Renderable;
+use Berry\Html5\HtmlTag;
+use Berry\Element;
 
 use function Berry\Html5\body;
 use function Berry\Html5\button;
@@ -21,7 +22,7 @@ use function Berry\Html5\title;
 
 // renders a counter button and a debug representation of itself
 // clicking on the button will send a POST request to the current script
-function counterButton(int $value): Renderable
+function counterButton(int $value): HtmlTag
 {
     $nextValue = $value + 1;
 
@@ -43,7 +44,7 @@ function counterButton(int $value): Renderable
 
 // our website layout to wrap around the content
 // includes picocss and htmx
-function layout(Renderable $content): Renderable
+function layout(Element $content): HtmlTag
 {
     return html()
         ->child(head()

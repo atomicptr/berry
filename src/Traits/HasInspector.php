@@ -2,16 +2,19 @@
 
 namespace Berry\Traits;
 
-use Berry\Debug\BerryInspector;
-use Berry\Debug\Inspector;
-use Berry\Renderable;
+use Berry\Contract\HasChildrenContract;
+use Berry\Contract\IsRenderableContract;
+use Berry\Inspector\BerryInspector;
+use Berry\Inspector\Inspector;
+use Berry\Element;
+use InvalidArgumentException;
 
 /**
  * @phpstan-import-type DebugFrame from Inspector
  */
 trait HasInspector
 {
-    /** @var array<Renderable|null> */
+    /** @var array<Element|null> */
     protected array $children = [];
 
     /**
@@ -19,7 +22,7 @@ trait HasInspector
      *
      * @param DebugFrame[]|null $stacktrace
      */
-    public function inspector(?Inspector $inspector = null, ?array $stacktrace = null): Renderable
+    public function inspector(?Inspector $inspector = null, ?array $stacktrace = null): Element&IsRenderableContract
     {
         $inspector ??= new BerryInspector();
         return $inspector->dump($this, $stacktrace ?? debug_backtrace());
@@ -34,9 +37,12 @@ trait HasInspector
     {
         $inspector = $this->inspector($inspector, $stacktrace ?? debug_backtrace());
 
-        // only use dumpAsChild for elements having `HasChildren`
-        if (method_exists($this, 'child') && $dumpAsChild) {
-            $this->children[] = $inspector;
+        if ($dumpAsChild) {
+            if ($this instanceof HasChildrenContract) {
+                $this->children[] = $inspector;
+            } else {
+                throw new InvalidArgumentException("Tried to dump inspector as a child when element doesn't support HasChildrenContract");
+            }
         } else {
             echo $inspector->toString();
         }

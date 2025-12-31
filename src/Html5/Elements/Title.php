@@ -2,15 +2,16 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\BaseNode;
+use Berry\Contract\HasTextContract;
 use Berry\Traits\HasText;
+use Berry\Tag;
 
-class Title extends BaseNode
+class Title extends Tag implements HasTextContract
 {
     use HasText;
 
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'title';
+        parent::__construct('title');
     }
 }

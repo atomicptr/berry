@@ -2,23 +2,18 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\Traits\HasHref;
-use Berry\Html5\Traits\HasSrc;
-use Berry\Html5\BaseNode;
+use Berry\Html5\HtmlVoidTag;
 
-class Img extends BaseNode
+class Img extends HtmlVoidTag
 {
-    use HasSrc;
-    use HasHref;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'img';
+        parent::__construct('img');
     }
 
-    protected static function isSelfClosing(): bool
+    public function src(string $src): static
     {
-        return true;
+        return $this->attr('src', $src);
     }
 
     public function alt(string $alt): static

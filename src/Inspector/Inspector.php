@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Berry\Debug;
+namespace Berry\Inspector;
 
-use Berry\Renderable;
+use Berry\Contract\IsRenderableContract;
+use Berry\Element;
 
 /**
  * Interface for rendering debug representations of elements
@@ -24,5 +25,5 @@ interface Inspector
      *
      * @param DebugFrame[]|null $stacktrace
      */
-    public function dump(Renderable $element, ?array $stacktrace = null): Renderable;
+    public function dump(Element $element, ?array $stacktrace = null): Element&IsRenderableContract;
 }

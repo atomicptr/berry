@@ -2,16 +2,17 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\BaseNode;
+use Berry\Contract\HasTextContract;
 use Berry\Traits\HasText;
+use Berry\Tag;
 
-class Option extends BaseNode
+class Option extends Tag implements HasTextContract
 {
     use HasText;
 
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'option';
+        parent::__construct('option');
     }
 
     public function value(string $value): static
@@ -19,13 +20,21 @@ class Option extends BaseNode
         return $this->attr('value', $value);
     }
 
-    public function selected(): static
+    public function selected(bool $selected = true): static
     {
+        if (!$selected) {
+            return $this;
+        }
+
         return $this->flag('selected');
     }
 
-    public function disabled(): static
+    public function disabled(bool $disabled = true): static
     {
+        if (!$disabled) {
+            return $this;
+        }
+
         return $this->flag('disabled');
     }
 }

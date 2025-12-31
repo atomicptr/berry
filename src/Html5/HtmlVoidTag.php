@@ -2,11 +2,12 @@
 
 namespace Berry\Html5;
 
+use Berry\Contract\HasInspectorContract;
 use Berry\Html5\Traits\HasGlobalAttributes;
 use Berry\Traits\HasInspector;
-use Berry\Node;
+use Berry\VoidTag;
 
-abstract class BaseNode extends Node
+abstract class HtmlVoidTag extends VoidTag implements HasInspectorContract
 {
     use HasGlobalAttributes;
     use HasInspector;

@@ -1,8 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Berry\Debug;
+namespace Berry\Inspector;
 
-use Berry\Renderable;
+use Berry\Contract\HasAttributesContract;
+use Berry\Contract\HasChildrenContract;
+use Berry\Contract\HasInspectorPropsContract;
+use Berry\Contract\IsRenderableContract;
+use Berry\Marker\HideFromInspector;
+use Berry\Element;
 
 use function Berry\Html5\details;
 use function Berry\Html5\div;
@@ -15,14 +20,11 @@ use function Berry\Html5\ul;
 
 /**
  * @phpstan-import-type DebugFrame from Inspector
- * @phpstan-import-type RenderableArrayRepr from Renderable
  */
 final class BerryInspector implements Inspector
 {
-    public function dump(Renderable $element, ?array $stacktrace = null): Renderable
+    public function dump(Element $element, ?array $stacktrace = null): Element&IsRenderableContract
     {
-        /** @var RenderableArrayRepr $data */
-        $data = $element->toArray();
         $trace = $stacktrace ?? debug_backtrace();
 
         $callerFile = $trace[0]['file'] ?? 'unknown';
@@ -30,54 +32,53 @@ final class BerryInspector implements Inspector
 
         $callerLabel = basename($callerFile) . ($callerLine !== '' ? ":$callerLine" : '');
 
-        return new InspectorRoot()
-            ->child(
-                div()
-                    ->class('berry-debug-root')
-                    ->child($this->renderStyles())
-                    // header
-                    ->child(
-                        div()
-                            ->class('berry-debug-header')
-                            ->child(
-                                div()
-                                    ->class('berry-debug-controls')
-                                    ->child(span()->class('berry-debug-dot berry-debug-red'))
-                                    ->child(span()->class('berry-debug-dot berry-debug-yellow'))
-                                    ->child(span()->class('berry-debug-dot berry-debug-green'))
-                                    ->child(span()->class('berry-debug-title')->text('BERRY INSPECTOR'))
-                            )
-                            ->child(span()->class('berry-debug-caller')->text($callerLabel)),
-                    )
-                    // node tree
-                    ->child(
-                        div()
-                            ->class('berry-debug-body')
-                            ->child($this->renderTreeNode($data))
-                    )
-                    // stacktrace
-                    ->child(
-                        details()
-                            ->class('berry-debug-trace')
-                            ->child(summary()->text('Trace (' . count($trace) . ')'))
-                            ->child(
-                                div()
-                                    ->class('berry-debug-trace-scroll')
-                                    ->child(
-                                        ul()
-                                            ->class('berry-debug-trace-list')
-                                            ->children(array_map([$this, 'renderTraceItem'], $trace))
-                                    )
-                            ),
-                    )
-                    ->child($this->renderScripts())
-            );
+        return new InspectorRoot(
+            div()
+                ->class('berry-debug-root')
+                ->child($this->renderStyles())
+                // header
+                ->child(
+                    div()
+                        ->class('berry-debug-header')
+                        ->child(
+                            div()
+                                ->class('berry-debug-controls')
+                                ->child(span()->class('berry-debug-dot berry-debug-red'))
+                                ->child(span()->class('berry-debug-dot berry-debug-yellow'))
+                                ->child(span()->class('berry-debug-dot berry-debug-green'))
+                                ->child(span()->class('berry-debug-title')->text('BERRY INSPECTOR'))
+                        )
+                        ->child(span()->class('berry-debug-caller')->text($callerLabel)),
+                )
+                // node tree
+                ->child(
+                    div()
+                        ->class('berry-debug-body')
+                        ->child($this->renderTreeNode($element))
+                )
+                // stacktrace
+                ->child(
+                    details()
+                        ->class('berry-debug-trace')
+                        ->child(summary()->text('Trace (' . count($trace) . ')'))
+                        ->child(
+                            div()
+                                ->class('berry-debug-trace-scroll')
+                                ->child(
+                                    ul()
+                                        ->class('berry-debug-trace-list')
+                                        ->children(array_map([$this, 'renderTraceItem'], $trace))
+                                )
+                        ),
+                )
+                ->child($this->renderScripts())
+        );
     }
 
     /**
      * @param DebugFrame $t
      */
-    private function renderTraceItem(array $t): Renderable
+    private function renderTraceItem(array $t): Element
     {
         $file = $t['file'] ?? 'internal';
         $line = $t['line'] ?? '0';
@@ -90,36 +91,43 @@ final class BerryInspector implements Inspector
         ]);
     }
 
-    /**
-     * @param RenderableArrayRepr $data
-     */
-    private function renderTreeNode(array $data): Renderable
+    private function renderTreeNode(Element $element): Element|null
     {
-        [$class, $props, $children] = $data;
+        if ($element instanceof HideFromInspector) {
+            return null;
+        }
 
         return div()->class('berry-debug-branch berry-debug-open')->children([
             span()->class('berry-debug-toggle'),
-            span()->class('berry-debug-class')->text($class),
+            span()->class('berry-debug-class')->text($element::class),
             div()
                 ->class('berry-debug-content')
-                ->child($this->renderProps($props))
-                ->children(
-                    array_map(
-                        function (array $node) {
-                            /** @var RenderableArrayRepr $node */
-                            return $this->renderTreeNode($node);
-                        },
-                        $children
-                    )
-                )
+                ->child($this->renderProps($element))
+                ->children(function () use ($element) {
+                    if (!($element instanceof HasChildrenContract)) {
+                        return [];
+                    }
+
+                    return array_map(
+                        fn(Element $child) => $this->renderTreeNode($child),
+                        array_filter($element->getChildren(), fn(Element|null $child) => $child !== null)
+                    );
+                })
         ]);
     }
 
-    /**
-     * @param array<string, string|int|float|bool> $props
-     */
-    private function renderProps(array $props): Renderable|null
+    private function renderProps(Element $element): Element|null
     {
+        $props = [];
+
+        if ($element instanceof HasAttributesContract) {
+            $props = array_merge($props, $element->getAttributes());
+        }
+
+        if ($element instanceof HasInspectorPropsContract) {
+            $props = array_merge($props, $element->inspectorProps());
+        }
+
         if (count($props) === 0) {
             return null;
         }
@@ -130,20 +138,23 @@ final class BerryInspector implements Inspector
                 ->class('berry-debug-content')
                 ->children(
                     array_map(
-                        fn(string $k, string|int|float|bool $v) => $this->renderLeaf($k, $v),
+                        fn(string $k, string|int|float|bool|null $v) => $this->renderLeaf($k, $v),
                         array_keys($props),
                         $props
                     )
                 ));
     }
 
-    private function renderLeaf(string $label, string|int|float|bool $data): Renderable
+    private function renderLeaf(string $label, string|int|float|bool|null $data): Element
     {
         $valNode = span();
+
         if (is_string($data)) {
             $valNode->class('berry-debug-string')->text('"' . $data . '"');
         } elseif (is_bool($data)) {
             $valNode->class('berry-debug-bool')->text($data ? 'true' : 'false');
+        } else if (is_null($data)) {
+            $valNode->class('berry-debug-bool')->text('null');
         } else {
             $valNode->class('berry-debug-bool')->text((string) $data);
         }
@@ -154,9 +165,9 @@ final class BerryInspector implements Inspector
         ]);
     }
 
-    private function renderStyles(): Renderable
+    private function renderStyles(): Element
     {
-        return style()->raw(<<<CSS
+        return style()->unsafeRaw(<<<CSS
             /** Berry Inspector Styling, based on Catppuccin Moccha */
             .berry-debug-root {
                 --base: #1e1e2e;
@@ -345,9 +356,9 @@ final class BerryInspector implements Inspector
             CSS);
     }
 
-    private function renderScripts(): Renderable
+    private function renderScripts(): Element
     {
-        return script()->raw(<<<JS
+        return script()->unsafeRaw(<<<JS
             document.querySelectorAll(".berry-debug-root .berry-debug-toggle, .berry-debug-root .berry-debug-class, .berry-debug-root .berry-debug-label").forEach(el => {
                 el.onclick = (e) => {
                     e.stopPropagation();

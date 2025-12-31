@@ -2,18 +2,13 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\BaseNode;
-use Berry\Traits\HasChildren;
-use Berry\Traits\HasText;
+use Berry\Html5\HtmlTag;
 
-class Label extends BaseNode
+class Label extends HtmlTag
 {
-    use HasChildren;
-    use HasText;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'label';
+        parent::__construct('label');
     }
 
     public function for(string $value): static

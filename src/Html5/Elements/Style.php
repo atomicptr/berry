@@ -2,17 +2,16 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Traits\HasChildren;
+use Berry\Contract\HasTextContract;
 use Berry\Traits\HasText;
-use Berry\Node;
+use Berry\Tag;
 
-class Style extends Node
+class Style extends Tag implements HasTextContract
 {
-    use HasChildren;
     use HasText;
 
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'style';
+        parent::__construct('style');
     }
 }

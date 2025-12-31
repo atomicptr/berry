@@ -6,7 +6,7 @@ use Stringable;
 
 trait HasAttributes
 {
-    /** @var array<string, string> */
+    /** @var array<string, string|true> */
     protected array $attributes = [];
 
     public function attr(string $key, Stringable|string|int|float|bool $value): static
@@ -17,7 +17,12 @@ trait HasAttributes
 
     public function flag(string $key): static
     {
-        $this->flags[$key] = true;
+        $this->attributes[$key] = true;
         return $this;
+    }
+
+    public function getAttributes(): array
+    {
+        return $this->attributes;
     }
 }

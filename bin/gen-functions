@@ -3,7 +3,65 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-\Berry\Utils\FunctionGenerator::generate(
+function generate(string $elementsDir, string $namespace, string $namespaceElements, ?string $outputFile): void
+{
+    $elementsDir = realpath($elementsDir);
+
+    $files = glob("$elementsDir/*.php");
+
+    if ($files === false) {
+        return;
+    }
+
+    $buffer = [];
+    $buffer[] = "<?php declare(strict_types=1);\n";
+    $buffer[] = "\n";
+    $buffer[] = "namespace {$namespace};\n";
+    $buffer[] = "\n";
+    $buffer[] = "// This file was automatically generated and should not be edited manually\n";
+    $buffer[] = "\n";
+
+    $funcs = [];
+
+    foreach ($files as $file) {
+        $className = basename($file, '.php');
+        $fqdn = $namespaceElements . '\\' . $className;
+
+        $funcName = strtolower($className);
+
+        $buffer[] = "use {$fqdn};\n";
+
+        // to add functions after namespace definitions
+        $funcs[] = [$funcName, $className];
+    }
+
+    $buffer[] = "\n";
+
+    foreach ($funcs as [$funcName, $className]) {
+        $buffer[] = "function $funcName(): $className\n";
+        $buffer[] = "{\n";
+        $buffer[] = "    return new $className();\n";
+        $buffer[] = "}\n\n";
+    }
+
+    $res = implode('', $buffer);
+
+    if ($outputFile !== null) {
+        $outputFile = realpath($outputFile);
+        assert(is_string($outputFile));
+
+        file_put_contents($outputFile, $res);
+
+        $num = count($funcs);
+
+        echo "Wrote $num functions to $outputFile";
+        return;
+    }
+
+    echo $res;
+}
+
+generate(
     __DIR__ . '/../src/Html5/Elements',
     'Berry\Html5',
     'Berry\Html5\Elements',

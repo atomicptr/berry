@@ -48,13 +48,13 @@ use Berry\Html5\Elements\Span;
 use Berry\Html5\Elements\Strong;
 use Berry\Html5\Elements\Style;
 use Berry\Html5\Elements\Summary;
-use Berry\Html5\Elements\Table;
 use Berry\Html5\Elements\TBody;
+use Berry\Html5\Elements\TFoot;
+use Berry\Html5\Elements\THead;
+use Berry\Html5\Elements\Table;
 use Berry\Html5\Elements\Td;
 use Berry\Html5\Elements\TextArea;
-use Berry\Html5\Elements\TFoot;
 use Berry\Html5\Elements\Th;
-use Berry\Html5\Elements\THead;
 use Berry\Html5\Elements\Title;
 use Berry\Html5\Elements\Tr;
 use Berry\Html5\Elements\U;
@@ -334,3 +334,4 @@ function ul(): Ul
 {
     return new Ul();
 }
+

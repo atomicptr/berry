@@ -3,13 +3,13 @@
 namespace Berry\Html5\Elements;
 
 use Berry\Html5\Enums\InputType;
-use Berry\Html5\BaseNode;
+use Berry\Html5\HtmlVoidTag;
 
-class Input extends BaseNode
+class Input extends HtmlVoidTag
 {
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'input';
+        parent::__construct('input');
     }
 
     protected static function isSelfClosing(): bool
@@ -17,8 +17,12 @@ class Input extends BaseNode
         return true;
     }
 
-    public function type(InputType $type): static
+    public function type(InputType|string $type): static
     {
+        if (is_string($type)) {
+            $type = InputType::from($type);
+        }
+
         return $this->attr('type', $type->value);
     }
 
@@ -32,8 +36,12 @@ class Input extends BaseNode
         return $this->attr('value', $value);
     }
 
-    public function checked(): static
+    public function checked(bool $checked = true): static
     {
+        if (!$checked) {
+            return $this;
+        }
+
         return $this->flag('checked');
     }
 
@@ -42,8 +50,12 @@ class Input extends BaseNode
         return $this->attr('accept', $value);
     }
 
-    public function capture(): static
+    public function capture(bool $capture = true): static
     {
+        if (!$capture) {
+            return $this;
+        }
+
         return $this->flag('capture');
     }
 

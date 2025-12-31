@@ -2,22 +2,27 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\Traits\HasHref;
-use Berry\Html5\Traits\HasTarget;
-use Berry\Node;
+use Berry\Html5\Enums\Target;
+use Berry\VoidTag;
 
-class Base extends Node
+class Base extends VoidTag
 {
-    use HasHref;
-    use HasTarget;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'base';
+        parent::__construct('base');
     }
 
-    protected static function isSelfClosing(): bool
+    public function href(string $href): static
     {
-        return true;
+        return $this->attr('href', $href);
+    }
+
+    public function target(Target|string $target): static
+    {
+        if (is_string($target)) {
+            $target = Target::from($target);
+        }
+
+        return $this->attr('target', $target->value);
     }
 }

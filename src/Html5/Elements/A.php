@@ -2,24 +2,26 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\Traits\HasHref;
-use Berry\Html5\BaseNode;
-use Berry\Traits\HasChildren;
-use Berry\Traits\HasText;
+use Berry\Html5\HtmlTag;
 
-class A extends BaseNode
+class A extends HtmlTag
 {
-    use HasChildren;
-    use HasText;
-    use HasHref;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'a';
+        parent::__construct('a');
     }
 
-    public function download(): static
+    public function href(string $href): static
     {
+        return $this->attr('href', $href);
+    }
+
+    public function download(bool $download = true): static
+    {
+        if (!$download) {
+            return $this;
+        }
+
         return $this->flag('download');
     }
 }

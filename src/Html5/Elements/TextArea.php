@@ -2,16 +2,13 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\BaseNode;
-use Berry\Traits\HasText;
+use Berry\Html5\HtmlTag;
 
-class TextArea extends BaseNode
+class TextArea extends HtmlTag
 {
-    use HasText;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'textarea';
+        parent::__construct('textarea');
     }
 
     public function name(string $value): static
@@ -29,8 +26,12 @@ class TextArea extends BaseNode
         return $this->attr('cols', (string) $value);
     }
 
-    public function disabled(): static
+    public function disabled(bool $disabled = true): static
     {
+        if (!$disabled) {
+            return $this;
+        }
+
         return $this->flag('disabled');
     }
 

@@ -2,15 +2,12 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\BaseNode;
-use Berry\Traits\HasChildren;
+use Berry\Html5\HtmlTag;
 
-class Tr extends BaseNode
+class Tr extends HtmlTag
 {
-    use HasChildren;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'tr';
+        parent::__construct('tr');
     }
 }

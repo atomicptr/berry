@@ -2,15 +2,16 @@
 
 namespace Berry\Html5\Elements;
 
+use Berry\Contract\HasChildrenContract;
 use Berry\Traits\HasChildren;
-use Berry\Node;
+use Berry\Tag;
 
-class Head extends Node
+class Head extends Tag implements HasChildrenContract
 {
     use HasChildren;
 
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'head';
+        parent::__construct('head');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Berry\Html5\Enums;
 
+use Stringable;
+
 enum Target: string
 {
     case Self = '_self';

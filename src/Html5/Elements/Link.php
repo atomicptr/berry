@@ -2,23 +2,28 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\Traits\HasHref;
-use Berry\Html5\Traits\HasRel;
-use Berry\Html5\BaseNode;
+use Berry\Html5\Enums\Rel;
+use Berry\Html5\HtmlVoidTag;
 
-class Link extends BaseNode
+class Link extends HtmlVoidTag
 {
-    use HasHref;
-    use HasRel;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'link';
+        parent::__construct('link');
     }
 
-    protected static function isSelfClosing(): bool
+    public function href(string $href): static
     {
-        return true;
+        return $this->attr('href', $href);
+    }
+
+    public function rel(Rel|string $rel): static
+    {
+        if (is_string($rel)) {
+            $rel = Rel::from($rel);
+        }
+
+        return $this->attr('rel', $rel->value);
     }
 
     public function integrity(string $value): static

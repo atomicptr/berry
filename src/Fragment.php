@@ -2,46 +2,21 @@
 
 namespace Berry;
 
-use Berry\Contracts\ExcludeFromArrayRepresentation;
+use Berry\Contract\HasChildrenContract;
+use Berry\Contract\IsRenderableContract;
+use Berry\Rendering\Renderer;
 use Berry\Traits\HasChildren;
-use RuntimeException;
+use Berry\Traits\Renderable;
 
-class Fragment extends Node
+class Fragment implements Element, HasChildrenContract, IsRenderableContract
 {
     use HasChildren;
+    use Renderable;
 
-    /**
-     * @return never
-     * @codeCoverageIgnore
-     */
-    protected static function tagName(): string
-    {
-        throw new RuntimeException("Fragment nodes don't have a tag");
-    }
-
-    /**
-     * @param string[] $buffer
-     */
-    public function renderInto(array &$buffer): void
+    public function render(Renderer $renderer): void
     {
         foreach ($this->children as $child) {
-            if ($child === null) {
-                continue;
-            }
-
-            $child->renderInto($buffer);
+            $child?->render($renderer);
         }
-    }
-
-    public function toArray(): array
-    {
-        return [
-            static::class,
-            [],
-            array_map(
-                fn(Renderable $child) => $child->toArray(),
-                array_filter($this->children, fn(Renderable|null $child) => $child !== null && !($child instanceof ExcludeFromArrayRepresentation))
-            ),
-        ];
     }
 }

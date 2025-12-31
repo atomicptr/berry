@@ -2,17 +2,12 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\BaseNode;
+use Berry\Html5\HtmlVoidTag;
 
-class Hr extends BaseNode
+class Hr extends HtmlVoidTag
 {
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'hr';
-    }
-
-    protected static function isSelfClosing(): bool
-    {
-        return true;
+        parent::__construct('hr');
     }
 }

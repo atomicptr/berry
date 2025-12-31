@@ -2,30 +2,22 @@
 
 namespace Berry\Traits;
 
-use Berry\Renderable;
+use Berry\Element;
+use Closure;
 
 trait HasChildren
 {
-    /** @var array<Renderable|null> */
+    /** @var array<Element|null> */
     protected array $children = [];
 
-    /**
-     * @param Renderable|(callable(): Renderable)|null $child
-     */
-    public function child(Renderable|callable|null $child): static
+    public function child(Element|Closure|null $child): static
     {
-        if ($child === null) {
-            return $this;
+        if ($child instanceof Closure) {
+            $child = $child();
         }
 
-        if (is_callable($child)) {
-            $child = $child();
-
-            if ($child === null) {
-                return $this;
-            }
-
-            assert($child instanceof Renderable);
+        if ($child === null) {
+            return $this;
         }
 
         $this->children[] = $child;
@@ -33,13 +25,9 @@ trait HasChildren
         return $this;
     }
 
-    /**
-     * @param (callable(): bool)|bool $condition
-     * @param Renderable|(callable(): Renderable)|null $child
-     */
-    public function childWhen(callable|bool $condition, Renderable|callable|null $child): static
+    public function childWhen(Closure|bool $condition, Element|Closure|null $child): static
     {
-        if (is_callable($condition)) {
+        if ($condition instanceof Closure) {
             return $this->childWhen($condition(), $child);
         }
 
@@ -50,12 +38,18 @@ trait HasChildren
         return $this;
     }
 
-    /**
-     * @param Renderable[] $children
-     */
-    public function children(array $children): static
+    public function children(array|Closure $children): static
     {
+        if ($children instanceof Closure) {
+            $children = $children();
+        }
+
         array_push($this->children, ...$children);
         return $this;
+    }
+
+    public function getChildren(): array
+    {
+        return $this->children;
     }
 }

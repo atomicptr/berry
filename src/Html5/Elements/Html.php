@@ -2,25 +2,20 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Traits\HasChildren;
-use Berry\Node;
+use Berry\Html5\HtmlTag;
+use Berry\Rendering\Renderer;
 
-class Html extends Node
+class Html extends HtmlTag
 {
-    use HasChildren;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'html';
+        parent::__construct('html');
     }
 
-    /**
-     * @param string[] $buffer
-     */
-    public function renderInto(array &$buffer): void
+    public function render(Renderer $renderer): void
     {
-        $buffer[] = '<!DOCTYPE html>';
-        parent::renderInto($buffer);
+        $renderer->write('<!DOCTYPE html>');
+        parent::render($renderer);
     }
 
     public function lang(string $lang): static

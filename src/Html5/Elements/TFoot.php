@@ -2,15 +2,12 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\BaseNode;
-use Berry\Traits\HasChildren;
+use Berry\Html5\HtmlTag;
 
-class TFoot extends BaseNode
+class TFoot extends HtmlTag
 {
-    use HasChildren;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'tfoot';
+        parent::__construct('tfoot');
     }
 }

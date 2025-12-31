@@ -2,33 +2,32 @@
 
 namespace Berry\Traits;
 
-use Berry\TextNode;
+use Berry\Text;
+use Berry\UnsafeRawText;
+use Closure;
 use Stringable;
 
 trait HasText
 {
+    /** @var array<Element|null> */
+    protected array $children = [];
+
     /**
      * Adds a text node to the element
      *
-     * @param Stringable|string|int|float|bool|(callable(): string)|null $text
+     * @param Stringable|string|int|float|bool|(Closure(): (string|int|float|bool|null))|null $text
      */
-    public function text(Stringable|string|int|float|bool|callable|null $text, bool $raw = false): static
+    public function text(Stringable|string|int|float|bool|Closure|null $text): static
     {
+        if ($text instanceof Closure) {
+            $text = $text();
+        }
+
         if ($text === null) {
             return $this;
         }
 
-        if (is_callable($text)) {
-            $text = $text();
-
-            if ($text === null) {
-                return $this;
-            }
-
-            assert(is_string($text));
-        }
-
-        $this->children[] = new TextNode((string) $text, $raw);
+        $this->children[] = new Text((string) $text);
 
         return $this;
     }
@@ -36,10 +35,20 @@ trait HasText
     /**
      * Adds a raw text node to the element
      *
-     * @param Stringable|string|int|float|bool|(callable(): string)|null $text
+     * @param Stringable|string|int|float|bool|(Closure(): (string|int|float|bool|null))|null $text
      */
-    public function raw(Stringable|string|int|float|bool|callable|null $text): static
+    public function unsafeRaw(Stringable|string|int|float|bool|Closure|null $text): static
     {
-        return $this->text($text, true);
+        if ($text instanceof Closure) {
+            $text = $text();
+        }
+
+        if ($text === null) {
+            return $this;
+        }
+
+        $this->children[] = new UnsafeRawText((string) $text);
+
+        return $this;
     }
 }

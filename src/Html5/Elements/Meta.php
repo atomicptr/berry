@@ -2,18 +2,13 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Node;
+use Berry\VoidTag;
 
-class Meta extends Node
+class Meta extends VoidTag
 {
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'meta';
-    }
-
-    protected static function isSelfClosing(): bool
-    {
-        return true;
+        parent::__construct('meta');
     }
 
     public function charset(string $value): static

@@ -2,16 +2,13 @@
 
 namespace Berry\Html5\Elements;
 
-use Berry\Html5\BaseNode;
-use Berry\Traits\HasChildren;
+use Berry\Html5\HtmlTag;
 
-class Select extends BaseNode
+class Select extends HtmlTag
 {
-    use HasChildren;
-
-    protected static function tagName(): string
+    public function __construct()
     {
-        return 'select';
+        parent::__construct('select');
     }
 
     public function name(string $value): static
@@ -19,13 +16,21 @@ class Select extends BaseNode
         return $this->attr('name', $value);
     }
 
-    public function disabled(): static
+    public function disabled(bool $disabled = true): static
     {
+        if (!$disabled) {
+            return $this;
+        }
+
         return $this->flag('disabled');
     }
 
-    public function multiple(): static
+    public function multiple(bool $multiple = true): static
     {
+        if (!$multiple) {
+            return $this;
+        }
+
         return $this->flag('multiple');
     }
 
