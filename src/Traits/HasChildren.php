@@ -38,10 +38,16 @@ trait HasChildren
         return $this;
     }
 
-    public function children(array|Closure $children): static
+    public function children(array|Closure $children, Element|Closure|null $else = null): static
     {
         if ($children instanceof Closure) {
             $children = $children();
+        }
+
+        if (count($children) === 0) {
+            $this->child($else);
+
+            return $this;
         }
 
         array_push($this->children, ...$children);

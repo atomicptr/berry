@@ -21,3 +21,30 @@ test('add children conditionally', function () {
             ->toString()
     )->toBe('<ul><li>This should</li><li>This should too</li></ul>');
 });
+
+test('add multiple children at once', function () {
+    expect(
+        ul()
+            ->children(
+                array_map(
+                    fn(string $text) => li()->text($text),
+                    ['One', 'Two', 'Three']
+                )
+            )
+            ->toString()
+    )->toBe('<ul><li>One</li><li>Two</li><li>Three</li></ul>');
+});
+
+test('add text when no children were added', function () {
+    expect(
+        ul()
+            ->children(
+                array_map(
+                    fn(string $text) => li()->text($text),
+                    []
+                ),
+                fn() => li()->text('No elements found')
+            )
+            ->toString()
+    )->toBe('<ul><li>No elements found</li></ul>');
+});
