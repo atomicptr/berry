@@ -4,7 +4,7 @@ namespace Berry\Xml;
 
 use Berry\Rendering\Renderer;
 
-class Root extends Element
+class XmlRoot extends XmlElement
 {
     public function render(Renderer $renderer): void
     {

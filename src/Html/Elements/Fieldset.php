@@ -38,9 +38,9 @@ class Fieldset extends HtmlTag
      * If this Boolean attribute is set, all form controls that are descendants of the <fieldset> are disabled, meaning they are not editable and won't be submitted along with the <form>.
      * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#disabled
      */
-    public function disabled(bool $disabled = true): static
+    public function disabled(bool $value = true): static
     {
-        return $disabled ? $this->flag('disabled') : $this;
+        return $value ? $this->flag('disabled') : $this;
     }
 
     /**
@@ -61,3 +61,4 @@ class Fieldset extends HtmlTag
         return $this->attr('name', $name);
     }
 }
+

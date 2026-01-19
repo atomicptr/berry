@@ -41,13 +41,9 @@ class Option extends HtmlTag
      * If this Boolean attribute is set, this option is not checkable.
      * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#disabled
      */
-    public function disabled(bool $disabled = true): static
+    public function disabled(bool $value = true): static
     {
-        if (!$disabled) {
-            return $this;
-        }
-
-        return $this->flag('disabled');
+        return $value ? $this->flag('disabled') : $this;
     }
 
     /**

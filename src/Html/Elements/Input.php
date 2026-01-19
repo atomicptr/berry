@@ -306,4 +306,14 @@ class Input extends HtmlVoidTag
     {
         return $this->attr('height', (string) $value);
     }
+
+    /**
+     * A Boolean attribute which, if present, indicates that the user should not be
+     * able to interact with the input
+     * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#disabled
+     */
+    public function disabled(bool $value = true): static
+    {
+        return $value ? $this->flag('disabled') : $this;
+    }
 }

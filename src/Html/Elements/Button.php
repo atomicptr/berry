@@ -51,11 +51,7 @@ class Button extends HtmlTag
      */
     public function disabled(bool $value = true): static
     {
-        if (!$value) {
-            return $this;
-        }
-
-        return $this->flag('disabled');
+        return $value ? $this->flag('disabled') : $this;
     }
 
     /**

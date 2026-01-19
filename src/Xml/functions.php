@@ -2,12 +2,12 @@
 
 namespace Berry\Xml;
 
-function element(string $name): Element
+function xmlElement(string $name): XmlElement
 {
-    return new Element($name);
+    return new XmlElement($name);
 }
 
-function root(string $name): Root
+function xmlRoot(string $name): XmlRoot
 {
-    return new Root($name);
+    return new XmlRoot($name);
 }

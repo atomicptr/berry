@@ -1,22 +1,22 @@
 <?php declare(strict_types=1);
 
-use function Berry\Xml\element;
-use function Berry\Xml\root;
+use function Berry\Xml\xmlElement;
+use function Berry\Xml\xmlRoot;
 
 test('it can generate an rss feed', function () {
-    $rss = root('rss')
+    $rss = xmlRoot('rss')
         ->attr('version', '2.0')
         ->child(
-            element('channel')
-                ->child(element('title')->text('Berry Blog'))
-                ->child(element('link')->text('https://berry-html.dev'))
-                ->child(element('description')->text('The official Berry blog'))
+            xmlElement('channel')
+                ->child(xmlElement('title')->text('Berry Blog'))
+                ->child(xmlElement('link')->text('https://berry-html.dev'))
+                ->child(xmlElement('description')->text('The official Berry blog'))
                 ->child(
-                    element('item')
-                        ->child(element('title')->text('Hello World'))
-                        ->child(element('link')->text('https://berry-html.dev/hello-world'))
-                        ->child(element('guid')->text('https://berry-html.dev/hello-world'))
-                        ->child(element('pubDate')->text('Mon, 06 Sep 2010 00:01:00 +0000'))
+                    xmlElement('item')
+                        ->child(xmlElement('title')->text('Hello World'))
+                        ->child(xmlElement('link')->text('https://berry-html.dev/hello-world'))
+                        ->child(xmlElement('guid')->text('https://berry-html.dev/hello-world'))
+                        ->child(xmlElement('pubDate')->text('Mon, 06 Sep 2010 00:01:00 +0000'))
                 )
         );
 

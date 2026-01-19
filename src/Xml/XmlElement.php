@@ -2,7 +2,7 @@
 
 namespace Berry\Xml;
 
-class Element extends XmlTag
+class XmlElement extends XmlTag
 {
     private string $name;
 
