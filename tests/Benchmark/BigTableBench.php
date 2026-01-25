@@ -77,4 +77,55 @@ class BigTableBench
         $table = $this->buildTable($params['rows'], $params['cols']);
         $table->toString();
     }
+
+    /**
+     * For comparisons
+     *
+     * @param array{rows: int, cols: int} $params
+     */
+    public function benchPhpStringConcat(array $params): void
+    {
+        $out = '<table>';
+
+        for ($row = 0; $row < $params['rows']; $row++) {
+            $out .= '<tr>';
+
+            for ($col = 0; $col < $params['cols']; $col++) {
+                $out .= "<td>$row x $col</td>";
+            }
+
+            $out .= '</tr>';
+        }
+
+        $out .= '</table>';
+
+        // for fairness lets also print it out
+        ob_start();
+        echo $out;
+        ob_end_clean();
+    }
+
+    /**
+     * For comparisons
+     *
+     * @param array{rows: int, cols: int} $params
+     */
+    public function benchPhpEcho(array $params): void
+    {
+        ob_start();
+        echo '<table>';
+
+        for ($row = 0; $row < $params['rows']; $row++) {
+            echo '<tr>';
+
+            for ($col = 0; $col < $params['cols']; $col++) {
+                echo "<td>$row x $col</td>";
+            }
+
+            echo '</tr>';
+        }
+
+        echo '</table>';
+        ob_end_clean();
+    }
 }
