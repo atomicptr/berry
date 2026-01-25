@@ -2,16 +2,13 @@
 
 namespace Berry\Traits;
 
-use Berry\Contract\HasTextContract;
 use Berry\Element;
-use Berry\Str;
-use Berry\Tag;
 use Closure;
 
 trait HasChildren
 {
     /**
-     * @var array<Element|null>|null
+     * @var array<string>|null
      */
     protected ?array $children = null;
 
@@ -25,19 +22,10 @@ trait HasChildren
             return $this;
         }
 
-        // Collapse simple leaf tags fast
-        if ($child instanceof Tag) {
-            $child = $child->collapseTag();
-        }
-
         $this->children ??= [];
 
-        // if has text buffered flush it first
-        if ($this instanceof HasTextContract && $this->hasTextBuffer()) {
-            $this->children[] = new Str($this->stealTextBuffer());
-        }
-
-        $this->children[] = $child;
+        /** @var Element $child */
+        $this->children[] = $child->toString();
 
         return $this;
     }
@@ -69,23 +57,10 @@ trait HasChildren
 
         $this->children ??= [];
 
-        // if has text buffered flush it first
-        if ($this instanceof HasTextContract && $this->hasTextBuffer()) {
-            $this->children[] = new Str($this->stealTextBuffer());
-        }
-
         foreach ($children as $c) {
-            if ($c instanceof Tag) {
-                $c = $c->collapseTag();
-            }
-            $this->children[] = $c;
+            $this->child($c);
         }
 
         return $this;
-    }
-
-    public function getChildren(): array
-    {
-        return $this->children ?? [];
     }
 }

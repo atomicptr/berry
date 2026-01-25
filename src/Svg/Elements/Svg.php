@@ -2,7 +2,6 @@
 
 namespace Berry\Svg\Elements;
 
-use Berry\Rendering\Renderer;
 use Berry\Svg\SvgTag;
 
 class Svg extends SvgTag
@@ -21,13 +20,15 @@ class Svg extends SvgTag
         return $this;
     }
 
-    public function render(Renderer $renderer): void
+    public function toString(): string
     {
+        $out = '';
+
         if ($this->standalone) {
-            $renderer->write('<?xml version="1.0" encoding="UTF-8"?>');
-            $renderer->write('<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">');
+            $out .= '<?xml version="1.0" encoding="UTF-8"?>';
+            $out .= '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">';
         }
-        
-        parent::render($renderer);
+
+        return $out . parent::toString();
     }
 }

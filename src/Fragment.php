@@ -3,20 +3,19 @@
 namespace Berry;
 
 use Berry\Contract\HasChildrenContract;
-use Berry\Contract\IsRenderableContract;
-use Berry\Rendering\Renderer;
 use Berry\Traits\HasChildren;
-use Berry\Traits\Renderable;
 
-class Fragment implements Element, HasChildrenContract, IsRenderableContract
+class Fragment implements Element, HasChildrenContract
 {
     use HasChildren;
-    use Renderable;
 
-    public function render(Renderer $renderer): void
+    public function toString(): string
     {
-        foreach ($this->children ?? [] as $child) {
-            $child?->render($renderer);
-        }
+        return implode('', $this->children ?? []);
+    }
+
+    public function __toString(): string
+    {
+        return $this->toString();
     }
 }

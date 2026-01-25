@@ -30,11 +30,4 @@ interface HasChildrenContract
      * @param Element|(Closure(): Element)|null $else Called when the list of children is empty
      */
     public function children(array|Closure $children, Element|Closure|null $else = null): static;
-
-    /**
-     * Returns the list of children added to this element
-     *
-     * @return array<Element|null>
-     */
-    public function getChildren(): array;
 }

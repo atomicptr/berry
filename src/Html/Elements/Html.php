@@ -3,7 +3,6 @@
 namespace Berry\Html\Elements;
 
 use Berry\Html\HtmlTag;
-use Berry\Rendering\Renderer;
 
 /**
  * The HTML <html> element represents the root (top-level element) of an HTML document, so it is also referred to as the root element. All other elements must be descendants of this element.
@@ -16,10 +15,9 @@ class Html extends HtmlTag
         parent::__construct('html');
     }
 
-    public function render(Renderer $renderer): void
+    public function toString(): string
     {
-        $renderer->write('<!DOCTYPE html>');
-        parent::render($renderer);
+        return '<!DOCTYPE html>' . parent::toString();
     }
 
     /**

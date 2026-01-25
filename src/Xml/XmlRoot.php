@@ -2,13 +2,10 @@
 
 namespace Berry\Xml;
 
-use Berry\Rendering\Renderer;
-
 class XmlRoot extends XmlElement
 {
-    public function render(Renderer $renderer): void
+    public function toString(): string
     {
-        $renderer->write('<?xml version="1.0" encoding="UTF-8"?>');
-        parent::render($renderer);
+        return '<?xml version="1.0" encoding="UTF-8"?>' . parent::toString();
     }
 }

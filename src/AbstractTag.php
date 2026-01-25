@@ -4,17 +4,15 @@ namespace Berry;
 
 use Berry\Contract\HasAttributesContract;
 use Berry\Contract\HasExtensionMethodsContract;
-use Berry\Contract\IsRenderableContract;
+use Berry\Rendering\Escaper;
 use Berry\Traits\HasAttributes;
 use Berry\Traits\HasExtensionMethods;
-use Berry\Traits\Renderable;
 use Closure;
 
-abstract class AbstractTag implements Element, HasAttributesContract, HasExtensionMethodsContract, IsRenderableContract
+abstract class AbstractTag implements Element, HasAttributesContract, HasExtensionMethodsContract
 {
     use HasAttributes;
     use HasExtensionMethods;
-    use Renderable;
 
     /** @var array<class-string, string> */
     private static array $tagNameMap = [];
@@ -56,5 +54,35 @@ abstract class AbstractTag implements Element, HasAttributesContract, HasExtensi
         }
 
         return $this;
+    }
+
+    protected function renderAttributeList(): string
+    {
+        $out = '';
+
+        foreach ($this->getAttributes() as $key => $value) {
+            $key = Escaper::escapeAttributeName(strval($key));
+
+            // if the string was escaped away, skip it
+            if (strlen($key) === 0) {
+                continue;
+            }
+
+            // flags
+            if ($value === true) {
+                $out .= " $key";
+                continue;
+            }
+
+            $escaped = Escaper::escape($value);
+            $out .= " {$key}=\"{$escaped}\"";
+        }
+
+        return $out;
+    }
+
+    public function __toString(): string
+    {
+        return $this->toString();
     }
 }

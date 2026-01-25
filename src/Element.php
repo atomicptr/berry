@@ -2,9 +2,9 @@
 
 namespace Berry;
 
-use Berry\Rendering\Renderer;
+use Stringable;
 
-interface Element
+interface Element extends Stringable
 {
-    public function render(Renderer $renderer): void;
+    public function toString(): string;
 }

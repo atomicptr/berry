@@ -2,24 +2,19 @@
 
 namespace Berry;
 
-use Berry\Contract\HasInspectorPropsContract;
-use Berry\Rendering\Renderer;
-
-final class Str implements Element, HasInspectorPropsContract
+final class Str implements Element
 {
     public function __construct(
         private string $content
     ) {}
 
-    public function inspectorProps(): array
+    public function toString(): string
     {
-        return [
-            'content' => $this->content,
-        ];
+        return $this->content;
     }
 
-    public function render(Renderer $renderer): void
+    public function __toString(): string
     {
-        $renderer->write($this->content);
+        return $this->toString();
     }
 }

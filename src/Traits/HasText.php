@@ -3,52 +3,15 @@
 namespace Berry\Traits;
 
 use Berry\Rendering\Escaper;
-use Berry\Rendering\Renderer;
-use Berry\Str;
 use Closure;
 use Stringable;
 
 trait HasText
 {
     /**
-     * Pre-rendered text buffer. Already escaped for text(), raw for unsafeRaw().
+     * @var array<string>|null
      */
-    protected ?string $textBuffer = null;
-
-    /**
-     * Flush buffered text into a child node
-     */
-    protected function flushTextBufferIfPresent(): void
-    {
-        if ($this->textBuffer !== null && $this->textBuffer !== '') {
-            $this->children[] = new Str($this->textBuffer);
-            $this->textBuffer = null;
-        }
-    }
-
-    /**
-     * Write buffered text (if any) directly to renderer.
-     */
-    protected function writeBufferedText(Renderer $renderer): void
-    {
-        if ($this->textBuffer !== null && $this->textBuffer !== '') {
-            $renderer->write($this->textBuffer);
-        }
-    }
-
-    /** Internal: true if there is buffered text */
-    public function hasTextBuffer(): bool
-    {
-        return $this->textBuffer !== null && $this->textBuffer !== '';
-    }
-
-    /** Internal: returns buffered text and clears the buffer */
-    public function stealTextBuffer(): string
-    {
-        $buf = $this->textBuffer ?? '';
-        $this->textBuffer = null;
-        return $buf;
-    }
+    protected ?array $children = null;
 
     /**
      * Adds a text node to the element (escaped immediately)
@@ -65,7 +28,9 @@ trait HasText
             return $this;
         }
 
-        $this->textBuffer = ($this->textBuffer ?? '') . Escaper::escape((string) $text);
+        $this->children ??= [];
+        $this->children[] = Escaper::escape((string) $text);
+
         return $this;
     }
 
@@ -84,7 +49,9 @@ trait HasText
             return $this;
         }
 
-        $this->textBuffer = ($this->textBuffer ?? '') . (string) $text;
+        $this->children ??= [];
+        $this->children[] = (string) $text;
+
         return $this;
     }
 }
