@@ -2,7 +2,7 @@
 
 namespace Berry\Traits;
 
-use Berry\Rendering\Escaper;
+use Berry\Escaper;
 use Closure;
 use Stringable;
 

@@ -4,7 +4,7 @@ namespace Berry;
 
 use Berry\Contract\HasAttributesContract;
 use Berry\Contract\HasExtensionMethodsContract;
-use Berry\Rendering\Escaper;
+use Berry\Escaper;
 use Berry\Traits\HasAttributes;
 use Berry\Traits\HasExtensionMethods;
 use Closure;

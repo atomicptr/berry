@@ -2,7 +2,7 @@
 
 namespace Berry;
 
-use Berry\Rendering\Escaper;
+use Berry\Escaper;
 
 /**
  * Render a text node
