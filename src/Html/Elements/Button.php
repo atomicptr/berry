@@ -24,7 +24,7 @@ class Button extends HtmlTag
      */
     public function type(ButtonType|string $type): static
     {
-        return $this->attr('type', $type instanceof ButtonType ? $type->value : $type);
+        return $this->attr('type', $type instanceof ButtonType ? $type->value : $type, escapeKey: false);
     }
 
     /**
@@ -33,7 +33,7 @@ class Button extends HtmlTag
      */
     public function name(string $value): static
     {
-        return $this->attr('name', $value);
+        return $this->attr('name', $value, escapeKey: false);
     }
 
     /**
@@ -42,7 +42,7 @@ class Button extends HtmlTag
      */
     public function value(string $value): static
     {
-        return $this->attr('value', $value);
+        return $this->attr('value', $value, escapeKey: false);
     }
 
     /**
@@ -60,7 +60,7 @@ class Button extends HtmlTag
      */
     public function form(string $formId): static
     {
-        return $this->attr('form', $formId);
+        return $this->attr('form', $formId, escapeKey: false);
     }
 
     /**
@@ -69,7 +69,7 @@ class Button extends HtmlTag
      */
     public function formaction(string $value): static
     {
-        return $this->attr('formaction', $value);
+        return $this->attr('formaction', $value, escapeKey: false);
     }
 
     /**
@@ -78,7 +78,7 @@ class Button extends HtmlTag
      */
     public function formenctype(string $value): static
     {
-        return $this->attr('formenctype', $value);
+        return $this->attr('formenctype', $value, escapeKey: false);
     }
 
     /**
@@ -87,7 +87,7 @@ class Button extends HtmlTag
      */
     public function formmethod(FormMethod|string $value): static
     {
-        return $this->attr('formmethod', $value instanceof FormMethod ? $value->value : $value);
+        return $this->attr('formmethod', $value instanceof FormMethod ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -109,6 +109,6 @@ class Button extends HtmlTag
      */
     public function formtarget(Target|string $value): static
     {
-        return $this->attr('formtarget', $value instanceof Target ? $value->value : $value);
+        return $this->attr('formtarget', $value instanceof Target ? $value->value : $value, escapeKey: false);
     }
 }

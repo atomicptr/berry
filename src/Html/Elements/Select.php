@@ -59,7 +59,7 @@ class Select extends HtmlTag
      */
     public function name(string $value): static
     {
-        return $this->attr('name', $value);
+        return $this->attr('name', $value, escapeKey: false);
     }
 
     /**
@@ -94,7 +94,7 @@ class Select extends HtmlTag
      */
     public function form(string $formId): static
     {
-        return $this->attr('form', $formId);
+        return $this->attr('form', $formId, escapeKey: false);
     }
 
     /**
@@ -116,7 +116,7 @@ class Select extends HtmlTag
      */
     public function size(int $value): static
     {
-        return $this->attr('size', (string) $value);
+        return $this->attr('size', (string) $value, escapeKey: false);
     }
 
     /**
@@ -126,9 +126,9 @@ class Select extends HtmlTag
     public function autocomplete(string|bool $value): static
     {
         if (is_bool($value)) {
-            return $this->attr('autocomplete', $value ? 'on' : 'off');
+            return $this->attr('autocomplete', $value ? 'on' : 'off', escapeKey: false);
         }
 
-        return $this->attr('autocomplete', $value);
+        return $this->attr('autocomplete', $value, escapeKey: false);
     }
 }

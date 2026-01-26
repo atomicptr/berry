@@ -21,6 +21,6 @@ class Abbr extends HtmlTag
      */
     public function title(string $title): static
     {
-        return $this->attr('title', $title);
+        return $this->attr('title', $title, escapeKey: false);
     }
 }

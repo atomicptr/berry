@@ -13,6 +13,6 @@ class Path extends SvgTag
 
     public function d(string $d): static
     {
-        return $this->attr('d', $d);
+        return $this->attr('d', $d, escapeKey: false);
     }
 }

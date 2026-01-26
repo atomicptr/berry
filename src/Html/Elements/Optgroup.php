@@ -50,6 +50,6 @@ class Optgroup extends HtmlTag
      */
     public function label(string $label): static
     {
-        return $this->attr('label', $label);
+        return $this->attr('label', $label, escapeKey: false);
     }
 }

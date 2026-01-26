@@ -21,7 +21,7 @@ class Del extends HtmlTag
      */
     public function cite(string $cite): static
     {
-        return $this->attr('cite', $cite);
+        return $this->attr('cite', $cite, escapeKey: false);
     }
 
     /**
@@ -30,6 +30,6 @@ class Del extends HtmlTag
      */
     public function datetime(string $datetime): static
     {
-        return $this->attr('datetime', $datetime);
+        return $this->attr('datetime', $datetime, escapeKey: false);
     }
 }

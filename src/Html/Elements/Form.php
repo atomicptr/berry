@@ -24,7 +24,7 @@ class Form extends HtmlTag
      */
     public function action(string $action): static
     {
-        return $this->attr('action', $action);
+        return $this->attr('action', $action, escapeKey: false);
     }
 
     /**
@@ -33,7 +33,7 @@ class Form extends HtmlTag
      */
     public function method(FormMethod|string $method): static
     {
-        return $this->attr('method', $method instanceof FormMethod ? $method->value : $method);
+        return $this->attr('method', $method instanceof FormMethod ? $method->value : $method, escapeKey: false);
     }
 
     /**
@@ -42,7 +42,7 @@ class Form extends HtmlTag
      */
     public function name(string $value): static
     {
-        return $this->attr('name', $value);
+        return $this->attr('name', $value, escapeKey: false);
     }
 
     /**
@@ -51,7 +51,7 @@ class Form extends HtmlTag
      */
     public function enctype(string $value): static
     {
-        return $this->attr('enctype', $value);
+        return $this->attr('enctype', $value, escapeKey: false);
     }
 
     /**
@@ -73,7 +73,7 @@ class Form extends HtmlTag
      */
     public function target(Target|string $target): static
     {
-        return $this->attr('target', $target instanceof Target ? $target->value : $target);
+        return $this->attr('target', $target instanceof Target ? $target->value : $target, escapeKey: false);
     }
 
     /**
@@ -82,7 +82,7 @@ class Form extends HtmlTag
      */
     public function autocomplete(bool $value = true): static
     {
-        return $this->attr('autocomplete', $value ? 'on' : 'off');
+        return $this->attr('autocomplete', $value ? 'on' : 'off', escapeKey: false);
     }
 
     /**
@@ -91,7 +91,7 @@ class Form extends HtmlTag
      */
     public function acceptCharset(string $value): static
     {
-        return $this->attr('accept-charset', $value);
+        return $this->attr('accept-charset', $value, escapeKey: false);
     }
 
     /**
@@ -100,6 +100,6 @@ class Form extends HtmlTag
      */
     public function rel(Rel|string $rel): static
     {
-        return $this->attr('rel', $rel instanceof Rel ? $rel->value : $rel);
+        return $this->attr('rel', $rel instanceof Rel ? $rel->value : $rel, escapeKey: false);
     }
 }

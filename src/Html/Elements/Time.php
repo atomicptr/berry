@@ -21,6 +21,6 @@ class Time extends HtmlTag
      */
     public function datetime(string $datetime): static
     {
-        return $this->attr('datetime', $datetime);
+        return $this->attr('datetime', $datetime, escapeKey: false);
     }
 }

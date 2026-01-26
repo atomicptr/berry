@@ -53,7 +53,7 @@ class Ol extends HtmlTag
      */
     public function start(int $value): static
     {
-        return $this->attr('start', (string) $value);
+        return $this->attr('start', (string) $value, escapeKey: false);
     }
 
     /**
@@ -63,6 +63,6 @@ class Ol extends HtmlTag
      */
     public function type(string $value): static
     {
-        return $this->attr('type', $value);
+        return $this->attr('type', $value, escapeKey: false);
     }
 }

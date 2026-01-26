@@ -42,6 +42,6 @@ class Datalist extends HtmlTag
      */
     public function id(string $id): static
     {
-        return $this->attr('id', $id);
+        return $this->attr('id', $id, escapeKey: false);
     }
 }

@@ -11,7 +11,7 @@ class Svg extends SvgTag
     public function __construct()
     {
         parent::__construct('svg');
-        $this->attr('xmlns', 'http://www.w3.org/2000/svg');
+        $this->attr('xmlns', 'http://www.w3.org/2000/svg', escapeKey: false);
     }
 
     public function standalone(bool $value = true): static

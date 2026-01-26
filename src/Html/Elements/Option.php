@@ -21,7 +21,7 @@ class Option extends HtmlTag
      */
     public function value(string $value): static
     {
-        return $this->attr('value', $value);
+        return $this->attr('value', $value, escapeKey: false);
     }
 
     /**
@@ -52,6 +52,6 @@ class Option extends HtmlTag
      */
     public function label(string $value): static
     {
-        return $this->attr('label', $value);
+        return $this->attr('label', $value, escapeKey: false);
     }
 }

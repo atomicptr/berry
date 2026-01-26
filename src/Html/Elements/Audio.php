@@ -23,7 +23,7 @@ class Audio extends HtmlTag
      */
     public function src(string $src): static
     {
-        return $this->attr('src', $src);
+        return $this->attr('src', $src, escapeKey: false);
     }
 
     /**
@@ -68,7 +68,7 @@ class Audio extends HtmlTag
      */
     public function preload(Preload|string $preload): static
     {
-        return $this->attr('preload', $preload instanceof Preload ? $preload->value : $preload);
+        return $this->attr('preload', $preload instanceof Preload ? $preload->value : $preload, escapeKey: false);
     }
 
     /**
@@ -77,6 +77,6 @@ class Audio extends HtmlTag
      */
     public function crossorigin(Crossorigin|string $crossorigin): static
     {
-        return $this->attr('crossorigin', $crossorigin instanceof Crossorigin ? $crossorigin->value : $crossorigin);
+        return $this->attr('crossorigin', $crossorigin instanceof Crossorigin ? $crossorigin->value : $crossorigin, escapeKey: false);
     }
 }

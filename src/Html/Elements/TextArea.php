@@ -22,7 +22,7 @@ class TextArea extends HtmlTag
      */
     public function name(string $value): static
     {
-        return $this->attr('name', $value);
+        return $this->attr('name', $value, escapeKey: false);
     }
 
     /**
@@ -31,7 +31,7 @@ class TextArea extends HtmlTag
      */
     public function rows(int $rows): static
     {
-        return $this->attr('rows', strval($rows));
+        return $this->attr('rows', strval($rows), escapeKey: false);
     }
 
     /**
@@ -40,7 +40,7 @@ class TextArea extends HtmlTag
      */
     public function cols(int $cols): static
     {
-        return $this->attr('cols', strval($cols));
+        return $this->attr('cols', strval($cols), escapeKey: false);
     }
 
     /**
@@ -50,10 +50,10 @@ class TextArea extends HtmlTag
     public function autocomplete(string|bool $value): static
     {
         if (is_bool($value)) {
-            return $this->attr('autocomplete', $value ? 'on' : 'off');
+            return $this->attr('autocomplete', $value ? 'on' : 'off', escapeKey: false);
         }
 
-        return $this->attr('autocomplete', $value);
+        return $this->attr('autocomplete', $value, escapeKey: false);
     }
 
     /**
@@ -71,7 +71,7 @@ class TextArea extends HtmlTag
      */
     public function form(string $formId): static
     {
-        return $this->attr('form', $formId);
+        return $this->attr('form', $formId, escapeKey: false);
     }
 
     /**
@@ -80,7 +80,7 @@ class TextArea extends HtmlTag
      */
     public function maxlength(int $value): static
     {
-        return $this->attr('maxlength', (string) $value);
+        return $this->attr('maxlength', (string) $value, escapeKey: false);
     }
 
     /**
@@ -89,7 +89,7 @@ class TextArea extends HtmlTag
      */
     public function minlength(int $value): static
     {
-        return $this->attr('minlength', (string) $value);
+        return $this->attr('minlength', (string) $value, escapeKey: false);
     }
 
     /**
@@ -98,7 +98,7 @@ class TextArea extends HtmlTag
      */
     public function placeholder(string $value): static
     {
-        return $this->attr('placeholder', $value);
+        return $this->attr('placeholder', $value, escapeKey: false);
     }
 
     /**
@@ -133,6 +133,6 @@ class TextArea extends HtmlTag
      */
     public function wrap(Wrap|string $value): static
     {
-        return $this->attr('wrap', $value instanceof Wrap ? $value->value : $value);
+        return $this->attr('wrap', $value instanceof Wrap ? $value->value : $value, escapeKey: false);
     }
 }

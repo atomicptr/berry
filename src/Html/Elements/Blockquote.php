@@ -21,6 +21,6 @@ class Blockquote extends HtmlTag
      */
     public function cite(string $cite): static
     {
-        return $this->attr('cite', $cite);
+        return $this->attr('cite', $cite, escapeKey: false);
     }
 }

@@ -25,7 +25,7 @@ class Img extends HtmlVoidTag
      */
     public function src(string $src): static
     {
-        return $this->attr('src', $src);
+        return $this->attr('src', $src, escapeKey: false);
     }
 
     /**
@@ -34,7 +34,7 @@ class Img extends HtmlVoidTag
      */
     public function alt(string $alt): static
     {
-        return $this->attr('alt', $alt);
+        return $this->attr('alt', $alt, escapeKey: false);
     }
 
     /**
@@ -43,7 +43,7 @@ class Img extends HtmlVoidTag
      */
     public function width(int|string $width): static
     {
-        return $this->attr('width', (string) $width);
+        return $this->attr('width', (string) $width, escapeKey: false);
     }
 
     /**
@@ -52,7 +52,7 @@ class Img extends HtmlVoidTag
      */
     public function height(int|string $height): static
     {
-        return $this->attr('height', (string) $height);
+        return $this->attr('height', (string) $height, escapeKey: false);
     }
 
     /**
@@ -61,7 +61,7 @@ class Img extends HtmlVoidTag
      */
     public function srcset(string $value): static
     {
-        return $this->attr('srcset', $value);
+        return $this->attr('srcset', $value, escapeKey: false);
     }
 
     /**
@@ -70,7 +70,7 @@ class Img extends HtmlVoidTag
      */
     public function sizes(string $value): static
     {
-        return $this->attr('sizes', $value);
+        return $this->attr('sizes', $value, escapeKey: false);
     }
 
     /**
@@ -79,7 +79,7 @@ class Img extends HtmlVoidTag
      */
     public function crossorigin(Crossorigin|string $value): static
     {
-        return $this->attr('crossorigin', $value instanceof Crossorigin ? $value->value : $value);
+        return $this->attr('crossorigin', $value instanceof Crossorigin ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -88,7 +88,7 @@ class Img extends HtmlVoidTag
      */
     public function decoding(Decoding|string $value): static
     {
-        return $this->attr('decoding', $value instanceof Decoding ? $value->value : $value);
+        return $this->attr('decoding', $value instanceof Decoding ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -97,7 +97,7 @@ class Img extends HtmlVoidTag
      */
     public function loading(Loading|string $value): static
     {
-        return $this->attr('loading', $value instanceof Loading ? $value->value : $value);
+        return $this->attr('loading', $value instanceof Loading ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -106,7 +106,7 @@ class Img extends HtmlVoidTag
      */
     public function referrerpolicy(ReferrerPolicy|string $value): static
     {
-        return $this->attr('referrerpolicy', $value instanceof ReferrerPolicy ? $value->value : $value);
+        return $this->attr('referrerpolicy', $value instanceof ReferrerPolicy ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -115,7 +115,7 @@ class Img extends HtmlVoidTag
      */
     public function usemap(string $value): static
     {
-        return $this->attr('usemap', $value);
+        return $this->attr('usemap', $value, escapeKey: false);
     }
 
     /**

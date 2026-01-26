@@ -21,7 +21,7 @@ class Progress extends HtmlTag
      */
     public function max(float $max): static
     {
-        return $this->attr('max', (string) $max);
+        return $this->attr('max', (string) $max, escapeKey: false);
     }
 
     /**
@@ -30,6 +30,6 @@ class Progress extends HtmlTag
      */
     public function value(float $value): static
     {
-        return $this->attr('value', (string) $value);
+        return $this->attr('value', (string) $value, escapeKey: false);
     }
 }

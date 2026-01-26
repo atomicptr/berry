@@ -49,7 +49,7 @@ class Fieldset extends HtmlTag
      */
     public function form(string $form): static
     {
-        return $this->attr('form', $form);
+        return $this->attr('form', $form, escapeKey: false);
     }
 
     /**
@@ -58,7 +58,7 @@ class Fieldset extends HtmlTag
      */
     public function name(string $name): static
     {
-        return $this->attr('name', $name);
+        return $this->attr('name', $name, escapeKey: false);
     }
 }
 

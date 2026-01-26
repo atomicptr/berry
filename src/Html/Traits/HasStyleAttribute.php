@@ -29,7 +29,7 @@ trait HasStyleAttribute
         $this->styles = array_merge($this->styles ?? [], $style);
 
         // to mark the inserted position, this will be replaced later
-        $this->attr('style', '');
+        $this->attr('style', '', escapeKey: false, escapeValue: false);
 
         return $this;
     }

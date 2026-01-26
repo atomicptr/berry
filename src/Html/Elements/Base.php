@@ -22,7 +22,7 @@ class Base extends HtmlVoidTag
      */
     public function href(string $href): static
     {
-        return $this->attr('href', $href);
+        return $this->attr('href', $href, escapeKey: false);
     }
 
     /**
@@ -31,6 +31,6 @@ class Base extends HtmlVoidTag
      */
     public function target(Target|string $target): static
     {
-        return $this->attr('target', $target instanceof Target ? $target->value : $target);
+        return $this->attr('target', $target instanceof Target ? $target->value : $target, escapeKey: false);
     }
 }

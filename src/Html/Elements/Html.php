@@ -26,7 +26,7 @@ class Html extends HtmlTag
      */
     public function lang(string $lang): static
     {
-        return $this->attr('lang', $lang);
+        return $this->attr('lang', $lang, escapeKey: false);
     }
 
     /**
@@ -35,6 +35,6 @@ class Html extends HtmlTag
      */
     public function xmlns(string $value): static
     {
-        return $this->attr('xmlns', $value);
+        return $this->attr('xmlns', $value, escapeKey: false);
     }
 }

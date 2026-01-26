@@ -13,11 +13,11 @@ class Text extends SvgTag
 
     public function x(int|string $value): static
     {
-        return $this->attr('x', (string) $value);
+        return $this->attr('x', (string) $value, escapeKey: false);
     }
 
     public function y(int|string $value): static
     {
-        return $this->attr('y', (string) $value);
+        return $this->attr('y', (string) $value, escapeKey: false);
     }
 }

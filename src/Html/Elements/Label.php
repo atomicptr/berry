@@ -21,6 +21,6 @@ class Label extends HtmlTag
      */
     public function for(string $value): static
     {
-        return $this->attr('for', $value);
+        return $this->attr('for', $value, escapeKey: false);
     }
 }

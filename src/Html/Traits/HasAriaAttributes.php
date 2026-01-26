@@ -15,7 +15,7 @@ trait HasAriaAttributes
      */
     public function role(AriaRole|string $role): static
     {
-        return $this->attr('role', $role instanceof AriaRole ? $role->value : $role);
+        return $this->attr('role', $role instanceof AriaRole ? $role->value : $role, escapeKey: false);
     }
 
     /**
@@ -23,7 +23,7 @@ trait HasAriaAttributes
      */
     public function ariaHidden(bool $value = true): static
     {
-        return $this->attr('aria-hidden', $value ? 'true' : 'false');
+        return $this->attr('aria-hidden', $value ? 'true' : 'false', escapeKey: false);
     }
 
     /**
@@ -31,7 +31,7 @@ trait HasAriaAttributes
      */
     public function ariaLabel(string $value): static
     {
-        return $this->attr('aria-label', $value);
+        return $this->attr('aria-label', $value, escapeKey: false);
     }
 
     /**
@@ -39,7 +39,7 @@ trait HasAriaAttributes
      */
     public function ariaLabelledBy(string $id): static
     {
-        return $this->attr('aria-labelledby', $id);
+        return $this->attr('aria-labelledby', $id, escapeKey: false);
     }
 
     /**
@@ -47,7 +47,7 @@ trait HasAriaAttributes
      */
     public function ariaDescribedby(string $id): static
     {
-        return $this->attr('aria-describedby', $id);
+        return $this->attr('aria-describedby', $id, escapeKey: false);
     }
 
     /**
@@ -56,7 +56,7 @@ trait HasAriaAttributes
      */
     public function ariaChecked(bool|string $value): static
     {
-        return $this->attr('aria-checked', is_bool($value) ? ($value ? 'true' : 'false') : $value);
+        return $this->attr('aria-checked', is_bool($value) ? ($value ? 'true' : 'false') : $value, escapeKey: false);
     }
 
     /**
@@ -64,7 +64,7 @@ trait HasAriaAttributes
      */
     public function ariaExpanded(bool $value = true): static
     {
-        return $this->attr('aria-expanded', $value ? 'true' : 'false');
+        return $this->attr('aria-expanded', $value ? 'true' : 'false', escapeKey: false);
     }
 
     /**
@@ -72,7 +72,7 @@ trait HasAriaAttributes
      */
     public function ariaDisabled(bool $value = true): static
     {
-        return $this->attr('aria-disabled', $value ? 'true' : 'false');
+        return $this->attr('aria-disabled', $value ? 'true' : 'false', escapeKey: false);
     }
 
     /**
@@ -80,7 +80,7 @@ trait HasAriaAttributes
      */
     public function ariaPressed(bool|string $value): static
     {
-        return $this->attr('aria-pressed', is_bool($value) ? ($value ? 'true' : 'false') : $value);
+        return $this->attr('aria-pressed', is_bool($value) ? ($value ? 'true' : 'false') : $value, escapeKey: false);
     }
 
     /**
@@ -88,7 +88,7 @@ trait HasAriaAttributes
      */
     public function ariaSelected(bool $value = true): static
     {
-        return $this->attr('aria-selected', $value ? 'true' : 'false');
+        return $this->attr('aria-selected', $value ? 'true' : 'false', escapeKey: false);
     }
 
     /**
@@ -96,7 +96,7 @@ trait HasAriaAttributes
      */
     public function ariaControls(string $id): static
     {
-        return $this->attr('aria-controls', $id);
+        return $this->attr('aria-controls', $id, escapeKey: false);
     }
 
     /**
@@ -104,7 +104,7 @@ trait HasAriaAttributes
      */
     public function ariaDetails(string $id): static
     {
-        return $this->attr('aria-details', $id);
+        return $this->attr('aria-details', $id, escapeKey: false);
     }
 
     /**
@@ -112,7 +112,7 @@ trait HasAriaAttributes
      */
     public function ariaErrorMessage(string $id): static
     {
-        return $this->attr('aria-errormessage', $id);
+        return $this->attr('aria-errormessage', $id, escapeKey: false);
     }
 
     /**
@@ -120,7 +120,7 @@ trait HasAriaAttributes
      */
     public function ariaFlowTo(string $id): static
     {
-        return $this->attr('aria-flowto', $id);
+        return $this->attr('aria-flowto', $id, escapeKey: false);
     }
 
     /**
@@ -128,7 +128,7 @@ trait HasAriaAttributes
      */
     public function ariaOwns(string $id): static
     {
-        return $this->attr('aria-owns', $id);
+        return $this->attr('aria-owns', $id, escapeKey: false);
     }
 
     /**
@@ -136,7 +136,7 @@ trait HasAriaAttributes
      */
     public function ariaPosInSet(int $value): static
     {
-        return $this->attr('aria-posinset', (string) $value);
+        return $this->attr('aria-posinset', (string) $value, escapeKey: false);
     }
 
     /**
@@ -144,7 +144,7 @@ trait HasAriaAttributes
      */
     public function ariaSetSize(int $value): static
     {
-        return $this->attr('aria-setsize', (string) $value);
+        return $this->attr('aria-setsize', (string) $value, escapeKey: false);
     }
 
     /**
@@ -154,7 +154,7 @@ trait HasAriaAttributes
      */
     public function ariaLive(string $value = 'polite'): static
     {
-        return $this->attr('aria-live', $value);
+        return $this->attr('aria-live', $value, escapeKey: false);
     }
 
     /**
@@ -162,7 +162,7 @@ trait HasAriaAttributes
      */
     public function ariaAtomic(bool $value = true): static
     {
-        return $this->attr('aria-atomic', $value ? 'true' : 'false');
+        return $this->attr('aria-atomic', $value ? 'true' : 'false', escapeKey: false);
     }
 
     /**
@@ -171,7 +171,7 @@ trait HasAriaAttributes
      */
     public function ariaRelevant(string $value): static
     {
-        return $this->attr('aria-relevant', $value);
+        return $this->attr('aria-relevant', $value, escapeKey: false);
     }
 
     /**
@@ -180,7 +180,7 @@ trait HasAriaAttributes
      */
     public function ariaBusy(bool $value = true): static
     {
-        return $this->attr('aria-busy', $value ? 'true' : 'false');
+        return $this->attr('aria-busy', $value ? 'true' : 'false', escapeKey: false);
     }
 
     /**
@@ -188,7 +188,7 @@ trait HasAriaAttributes
      */
     public function ariaAutocomplete(string $value): static
     {
-        return $this->attr('aria-autocomplete', $value);
+        return $this->attr('aria-autocomplete', $value, escapeKey: false);
     }
 
     /**
@@ -196,7 +196,7 @@ trait HasAriaAttributes
      */
     public function ariaInvalid(bool|string $value = true): static
     {
-        return $this->attr('aria-invalid', is_bool($value) ? ($value ? 'true' : 'false') : $value);
+        return $this->attr('aria-invalid', is_bool($value) ? ($value ? 'true' : 'false') : $value, escapeKey: false);
     }
 
     /**
@@ -204,7 +204,7 @@ trait HasAriaAttributes
      */
     public function ariaRequired(bool $value = true): static
     {
-        return $this->attr('aria-required', $value ? 'true' : 'false');
+        return $this->attr('aria-required', $value ? 'true' : 'false', escapeKey: false);
     }
 
     /**
@@ -212,7 +212,7 @@ trait HasAriaAttributes
      */
     public function ariaValueNow(float|int $value): static
     {
-        return $this->attr('aria-valuenow', (string) $value);
+        return $this->attr('aria-valuenow', (string) $value, escapeKey: false);
     }
 
     /**
@@ -220,7 +220,7 @@ trait HasAriaAttributes
      */
     public function ariaValueMax(float|int $value): static
     {
-        return $this->attr('aria-valuemax', (string) $value);
+        return $this->attr('aria-valuemax', (string) $value, escapeKey: false);
     }
 
     /**
@@ -228,7 +228,7 @@ trait HasAriaAttributes
      */
     public function ariaValueMin(float|int $value): static
     {
-        return $this->attr('aria-valuemin', (string) $value);
+        return $this->attr('aria-valuemin', (string) $value, escapeKey: false);
     }
 
     /**
@@ -236,6 +236,6 @@ trait HasAriaAttributes
      */
     public function ariaValueText(string $value): static
     {
-        return $this->attr('aria-valuetext', $value);
+        return $this->attr('aria-valuetext', $value, escapeKey: false);
     }
 }

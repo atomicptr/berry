@@ -28,7 +28,7 @@ trait HasClassAttribute
         }
 
         // to mark the inserted position, this will be replaced later
-        $this->attr('class', '');
+        $this->attr('class', '', escapeKey: false, escapeValue: false);
 
         $this->classes ??= [];
         array_push($this->classes, ...$class);

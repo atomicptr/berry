@@ -21,7 +21,7 @@ class Meter extends HtmlTag
      */
     public function min(float $min): static
     {
-        return $this->attr('min', (string) $min);
+        return $this->attr('min', (string) $min, escapeKey: false);
     }
 
     /**
@@ -30,7 +30,7 @@ class Meter extends HtmlTag
      */
     public function max(float $max): static
     {
-        return $this->attr('max', (string) $max);
+        return $this->attr('max', (string) $max, escapeKey: false);
     }
 
     /**
@@ -39,7 +39,7 @@ class Meter extends HtmlTag
      */
     public function low(float $low): static
     {
-        return $this->attr('low', (string) $low);
+        return $this->attr('low', (string) $low, escapeKey: false);
     }
 
     /**
@@ -48,7 +48,7 @@ class Meter extends HtmlTag
      */
     public function high(float $high): static
     {
-        return $this->attr('high', (string) $high);
+        return $this->attr('high', (string) $high, escapeKey: false);
     }
 
     /**
@@ -57,7 +57,7 @@ class Meter extends HtmlTag
      */
     public function optimum(float $optimum): static
     {
-        return $this->attr('optimum', (string) $optimum);
+        return $this->attr('optimum', (string) $optimum, escapeKey: false);
     }
 
     /**
@@ -66,6 +66,6 @@ class Meter extends HtmlTag
      */
     public function value(float $value): static
     {
-        return $this->attr('value', (string) $value);
+        return $this->attr('value', (string) $value, escapeKey: false);
     }
 }

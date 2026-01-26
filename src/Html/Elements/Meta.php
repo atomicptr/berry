@@ -21,7 +21,7 @@ class Meta extends HtmlVoidTag
      */
     public function charset(string $value): static
     {
-        return $this->attr('charset', $value);
+        return $this->attr('charset', $value, escapeKey: false);
     }
 
     /**
@@ -30,7 +30,7 @@ class Meta extends HtmlVoidTag
      */
     public function content(string $value): static
     {
-        return $this->attr('content', $value);
+        return $this->attr('content', $value, escapeKey: false);
     }
 
     /**
@@ -39,7 +39,7 @@ class Meta extends HtmlVoidTag
      */
     public function httpEquiv(string $value): static
     {
-        return $this->attr('http-equiv', $value);
+        return $this->attr('http-equiv', $value, escapeKey: false);
     }
 
     /**
@@ -48,7 +48,7 @@ class Meta extends HtmlVoidTag
      */
     public function media(string $value): static
     {
-        return $this->attr('media', $value);
+        return $this->attr('media', $value, escapeKey: false);
     }
 
     /**
@@ -57,6 +57,6 @@ class Meta extends HtmlVoidTag
      */
     public function name(string $value): static
     {
-        return $this->attr('name', $value);
+        return $this->attr('name', $value, escapeKey: false);
     }
 }

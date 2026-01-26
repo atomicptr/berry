@@ -24,7 +24,7 @@ class Link extends HtmlVoidTag
      */
     public function href(string $href): static
     {
-        return $this->attr('href', $href);
+        return $this->attr('href', $href, escapeKey: false);
     }
 
     /**
@@ -33,7 +33,7 @@ class Link extends HtmlVoidTag
      */
     public function rel(Rel|string $rel): static
     {
-        return $this->attr('rel', $rel instanceof Rel ? $rel->value : $rel);
+        return $this->attr('rel', $rel instanceof Rel ? $rel->value : $rel, escapeKey: false);
     }
 
     /**
@@ -42,7 +42,7 @@ class Link extends HtmlVoidTag
      */
     public function as(string $value): static
     {
-        return $this->attr('as', $value);
+        return $this->attr('as', $value, escapeKey: false);
     }
 
     /**
@@ -51,7 +51,7 @@ class Link extends HtmlVoidTag
      */
     public function crossorigin(Crossorigin|string $value): static
     {
-        return $this->attr('crossorigin', $value instanceof Crossorigin ? $value->value : $value);
+        return $this->attr('crossorigin', $value instanceof Crossorigin ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -73,7 +73,7 @@ class Link extends HtmlVoidTag
      */
     public function hreflang(string $value): static
     {
-        return $this->attr('hreflang', $value);
+        return $this->attr('hreflang', $value, escapeKey: false);
     }
 
     /**
@@ -82,7 +82,7 @@ class Link extends HtmlVoidTag
      */
     public function imagesizes(string $value): static
     {
-        return $this->attr('imagesizes', $value);
+        return $this->attr('imagesizes', $value, escapeKey: false);
     }
 
     /**
@@ -91,7 +91,7 @@ class Link extends HtmlVoidTag
      */
     public function imagesrcset(string $value): static
     {
-        return $this->attr('imagesrcset', $value);
+        return $this->attr('imagesrcset', $value, escapeKey: false);
     }
 
     /**
@@ -100,7 +100,7 @@ class Link extends HtmlVoidTag
      */
     public function integrity(string $value): static
     {
-        return $this->attr('integrity', $value);
+        return $this->attr('integrity', $value, escapeKey: false);
     }
 
     /**
@@ -109,7 +109,7 @@ class Link extends HtmlVoidTag
      */
     public function media(string $value): static
     {
-        return $this->attr('media', $value);
+        return $this->attr('media', $value, escapeKey: false);
     }
 
     /**
@@ -118,7 +118,7 @@ class Link extends HtmlVoidTag
      */
     public function referrerpolicy(ReferrerPolicy|string $value): static
     {
-        return $this->attr('referrerpolicy', $value instanceof ReferrerPolicy ? $value->value : $value);
+        return $this->attr('referrerpolicy', $value instanceof ReferrerPolicy ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -127,7 +127,7 @@ class Link extends HtmlVoidTag
      */
     public function sizes(string $value): static
     {
-        return $this->attr('sizes', $value);
+        return $this->attr('sizes', $value, escapeKey: false);
     }
 
     /**
@@ -136,7 +136,7 @@ class Link extends HtmlVoidTag
      */
     public function type(string $value): static
     {
-        return $this->attr('type', $value);
+        return $this->attr('type', $value, escapeKey: false);
     }
 
     /**
@@ -145,6 +145,6 @@ class Link extends HtmlVoidTag
      */
     public function fetchpriority(string $value): static
     {
-        return $this->attr('fetchpriority', $value);
+        return $this->attr('fetchpriority', $value, escapeKey: false);
     }
 }

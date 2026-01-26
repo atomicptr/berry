@@ -13,16 +13,16 @@ class Circle extends SvgTag
 
     public function cx(int|string $value): static
     {
-        return $this->attr('cx', (string) $value);
+        return $this->attr('cx', (string) $value, escapeKey: false);
     }
 
     public function cy(int|string $value): static
     {
-        return $this->attr('cy', (string) $value);
+        return $this->attr('cy', (string) $value, escapeKey: false);
     }
 
     public function r(int|string $value): static
     {
-        return $this->attr('r', (string) $value);
+        return $this->attr('r', (string) $value, escapeKey: false);
     }
 }

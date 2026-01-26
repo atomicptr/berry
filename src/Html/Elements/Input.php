@@ -24,7 +24,7 @@ class Input extends HtmlVoidTag
      */
     public function type(InputType|string $type): static
     {
-        return $this->attr('type', $type instanceof InputType ? $type->value : $type);
+        return $this->attr('type', $type instanceof InputType ? $type->value : $type, escapeKey: false);
     }
 
     /**
@@ -33,7 +33,7 @@ class Input extends HtmlVoidTag
      */
     public function name(string $value): static
     {
-        return $this->attr('name', $value);
+        return $this->attr('name', $value, escapeKey: false);
     }
 
     /**
@@ -42,7 +42,7 @@ class Input extends HtmlVoidTag
      */
     public function value(string $value): static
     {
-        return $this->attr('value', $value);
+        return $this->attr('value', $value, escapeKey: false);
     }
 
     /**
@@ -64,7 +64,7 @@ class Input extends HtmlVoidTag
      */
     public function accept(string $value): static
     {
-        return $this->attr('accept', $value);
+        return $this->attr('accept', $value, escapeKey: false);
     }
 
     /**
@@ -77,7 +77,7 @@ class Input extends HtmlVoidTag
             return $value ? $this->flag('capture') : $this;
         }
 
-        return $this->attr('capture', $value);
+        return $this->attr('capture', $value, escapeKey: false);
     }
 
     /**
@@ -87,10 +87,10 @@ class Input extends HtmlVoidTag
     public function autocomplete(bool|string $value): static
     {
         if (is_bool($value)) {
-            return $this->attr('autocomplete', $value ? 'on' : 'off');
+            return $this->attr('autocomplete', $value ? 'on' : 'off', escapeKey: false);
         }
 
-        return $this->attr('autocomplete', $value);
+        return $this->attr('autocomplete', $value, escapeKey: false);
     }
 
     /**
@@ -99,7 +99,7 @@ class Input extends HtmlVoidTag
      */
     public function placeholder(string $placeholder): static
     {
-        return $this->attr('placeholder', $placeholder);
+        return $this->attr('placeholder', $placeholder, escapeKey: false);
     }
 
     /**
@@ -108,7 +108,7 @@ class Input extends HtmlVoidTag
      */
     public function form(string $formId): static
     {
-        return $this->attr('form', $formId);
+        return $this->attr('form', $formId, escapeKey: false);
     }
 
     /**
@@ -117,7 +117,7 @@ class Input extends HtmlVoidTag
      */
     public function formaction(string $value): static
     {
-        return $this->attr('formaction', $value);
+        return $this->attr('formaction', $value, escapeKey: false);
     }
 
     /**
@@ -126,7 +126,7 @@ class Input extends HtmlVoidTag
      */
     public function formenctype(string $value): static
     {
-        return $this->attr('formenctype', $value);
+        return $this->attr('formenctype', $value, escapeKey: false);
     }
 
     /**
@@ -135,7 +135,7 @@ class Input extends HtmlVoidTag
      */
     public function formmethod(FormMethod|string $value): static
     {
-        return $this->attr('formmethod', $value instanceof FormMethod ? $value->value : $value);
+        return $this->attr('formmethod', $value instanceof FormMethod ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -157,7 +157,7 @@ class Input extends HtmlVoidTag
      */
     public function formtarget(Target|string $value): static
     {
-        return $this->attr('formtarget', $value instanceof Target ? $value->value : $value);
+        return $this->attr('formtarget', $value instanceof Target ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -166,7 +166,7 @@ class Input extends HtmlVoidTag
      */
     public function list(string $value): static
     {
-        return $this->attr('list', $value);
+        return $this->attr('list', $value, escapeKey: false);
     }
 
     /**
@@ -175,7 +175,7 @@ class Input extends HtmlVoidTag
      */
     public function max(string|int|float $value): static
     {
-        return $this->attr('max', (string) $value);
+        return $this->attr('max', (string) $value, escapeKey: false);
     }
 
     /**
@@ -184,7 +184,7 @@ class Input extends HtmlVoidTag
      */
     public function min(string|int|float $value): static
     {
-        return $this->attr('min', (string) $value);
+        return $this->attr('min', (string) $value, escapeKey: false);
     }
 
     /**
@@ -193,7 +193,7 @@ class Input extends HtmlVoidTag
      */
     public function maxlength(int $value): static
     {
-        return $this->attr('maxlength', (string) $value);
+        return $this->attr('maxlength', (string) $value, escapeKey: false);
     }
 
     /**
@@ -202,7 +202,7 @@ class Input extends HtmlVoidTag
      */
     public function minlength(int $value): static
     {
-        return $this->attr('minlength', (string) $value);
+        return $this->attr('minlength', (string) $value, escapeKey: false);
     }
 
     /**
@@ -224,7 +224,7 @@ class Input extends HtmlVoidTag
      */
     public function pattern(string $value): static
     {
-        return $this->attr('pattern', $value);
+        return $this->attr('pattern', $value, escapeKey: false);
     }
 
     /**
@@ -259,7 +259,7 @@ class Input extends HtmlVoidTag
      */
     public function size(int $value): static
     {
-        return $this->attr('size', (string) $value);
+        return $this->attr('size', (string) $value, escapeKey: false);
     }
 
     /**
@@ -268,7 +268,7 @@ class Input extends HtmlVoidTag
      */
     public function step(string|int|float $value): static
     {
-        return $this->attr('step', (string) $value);
+        return $this->attr('step', (string) $value, escapeKey: false);
     }
 
     /**
@@ -277,7 +277,7 @@ class Input extends HtmlVoidTag
      */
     public function alt(string $value): static
     {
-        return $this->attr('alt', $value);
+        return $this->attr('alt', $value, escapeKey: false);
     }
 
     /**
@@ -286,7 +286,7 @@ class Input extends HtmlVoidTag
      */
     public function src(string $value): static
     {
-        return $this->attr('src', $value);
+        return $this->attr('src', $value, escapeKey: false);
     }
 
     /**
@@ -295,7 +295,7 @@ class Input extends HtmlVoidTag
      */
     public function width(int|string $value): static
     {
-        return $this->attr('width', (string) $value);
+        return $this->attr('width', (string) $value, escapeKey: false);
     }
 
     /**
@@ -304,7 +304,7 @@ class Input extends HtmlVoidTag
      */
     public function height(int|string $value): static
     {
-        return $this->attr('height', (string) $value);
+        return $this->attr('height', (string) $value, escapeKey: false);
     }
 
     /**

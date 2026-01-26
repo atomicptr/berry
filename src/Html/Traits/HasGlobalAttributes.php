@@ -25,7 +25,7 @@ trait HasGlobalAttributes
      */
     public function id(string $id): static
     {
-        return $this->attr('id', $id);
+        return $this->attr('id', $id, escapeKey: false);
     }
 
     /**
@@ -35,7 +35,7 @@ trait HasGlobalAttributes
      */
     public function accesskey(string $value): static
     {
-        return $this->attr('accesskey', $value);
+        return $this->attr('accesskey', $value, escapeKey: false);
     }
 
     /**
@@ -44,7 +44,7 @@ trait HasGlobalAttributes
      */
     public function lang(string $value): static
     {
-        return $this->attr('lang', $value);
+        return $this->attr('lang', $value, escapeKey: false);
     }
 
     /**
@@ -53,7 +53,7 @@ trait HasGlobalAttributes
      */
     public function title(string $value): static
     {
-        return $this->attr('title', $value);
+        return $this->attr('title', $value, escapeKey: false);
     }
 
     /**
@@ -108,7 +108,7 @@ trait HasGlobalAttributes
             return $this->flag('contenteditable');
         }
 
-        return $this->attr('contenteditable', $value);
+        return $this->attr('contenteditable', $value, escapeKey: false);
     }
 
     /**
@@ -117,7 +117,7 @@ trait HasGlobalAttributes
      */
     public function tabindex(int $value): static
     {
-        return $this->attr('tabindex', (string) $value);
+        return $this->attr('tabindex', (string) $value, escapeKey: false);
     }
 
     /**
@@ -139,7 +139,7 @@ trait HasGlobalAttributes
      */
     public function autocapitalize(AutoCapitalize|string $value): static
     {
-        return $this->attr('autocapitalize', $value instanceof AutoCapitalize ? $value->value : $value);
+        return $this->attr('autocapitalize', $value instanceof AutoCapitalize ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -148,7 +148,7 @@ trait HasGlobalAttributes
      */
     public function dir(Direction|string $value): static
     {
-        return $this->attr('dir', $value instanceof Direction ? $value->value : $value);
+        return $this->attr('dir', $value instanceof Direction ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -157,7 +157,7 @@ trait HasGlobalAttributes
      */
     public function inputmode(InputMode|string $value): static
     {
-        return $this->attr('inputmode', $value instanceof InputMode ? $value->value : $value);
+        return $this->attr('inputmode', $value instanceof InputMode ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -166,7 +166,7 @@ trait HasGlobalAttributes
      */
     public function enterkeyhint(string $value): static
     {
-        return $this->attr('enterkeyhint', $value);
+        return $this->attr('enterkeyhint', $value, escapeKey: false);
     }
 
     /**
@@ -175,7 +175,7 @@ trait HasGlobalAttributes
      */
     public function is(string $value): static
     {
-        return $this->attr('is', $value);
+        return $this->attr('is', $value, escapeKey: false);
     }
 
     /**
@@ -184,7 +184,7 @@ trait HasGlobalAttributes
      */
     public function nonce(string $value): static
     {
-        return $this->attr('nonce', $value);
+        return $this->attr('nonce', $value, escapeKey: false);
     }
 
     /**
@@ -193,7 +193,7 @@ trait HasGlobalAttributes
      */
     public function part(string $value): static
     {
-        return $this->attr('part', $value);
+        return $this->attr('part', $value, escapeKey: false);
     }
 
     /**
@@ -202,7 +202,7 @@ trait HasGlobalAttributes
      */
     public function slot(string $value): static
     {
-        return $this->attr('slot', $value);
+        return $this->attr('slot', $value, escapeKey: false);
     }
 
     /**
@@ -211,7 +211,7 @@ trait HasGlobalAttributes
      */
     public function itemprop(string $value): static
     {
-        return $this->attr('itemprop', $value);
+        return $this->attr('itemprop', $value, escapeKey: false);
     }
 
     /**
@@ -233,7 +233,7 @@ trait HasGlobalAttributes
      */
     public function itemtype(string $value): static
     {
-        return $this->attr('itemtype', $value);
+        return $this->attr('itemtype', $value, escapeKey: false);
     }
 
     /**
@@ -242,7 +242,7 @@ trait HasGlobalAttributes
      */
     public function itemid(string $value): static
     {
-        return $this->attr('itemid', $value);
+        return $this->attr('itemid', $value, escapeKey: false);
     }
 
     /**
@@ -251,7 +251,7 @@ trait HasGlobalAttributes
      */
     public function itemref(string $value): static
     {
-        return $this->attr('itemref', $value);
+        return $this->attr('itemref', $value, escapeKey: false);
     }
 
     /**
@@ -262,7 +262,7 @@ trait HasGlobalAttributes
      */
     public function data(string $key, Stringable|string|int|float|bool $value): static
     {
-        return $this->attr("data-{$key}", $value);
+        return $this->attr("data-{$key}", $value, escapeKey: false);
     }
 
     /**

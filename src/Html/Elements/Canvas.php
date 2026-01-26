@@ -21,7 +21,7 @@ class Canvas extends HtmlTag
      */
     public function height(int $height): static
     {
-        return $this->attr('height', (string) $height);
+        return $this->attr('height', (string) $height, escapeKey: false);
     }
 
     /**
@@ -30,6 +30,6 @@ class Canvas extends HtmlTag
      */
     public function width(int $width): static
     {
-        return $this->attr('width', (string) $width);
+        return $this->attr('width', (string) $width, escapeKey: false);
     }
 }

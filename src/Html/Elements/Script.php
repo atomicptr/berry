@@ -23,7 +23,7 @@ class Script extends HtmlTag
      */
     public function src(string $src): static
     {
-        return $this->attr('src', $src);
+        return $this->attr('src', $src, escapeKey: false);
     }
 
     /**
@@ -58,7 +58,7 @@ class Script extends HtmlTag
      */
     public function crossorigin(Crossorigin|string $value): static
     {
-        return $this->attr('crossorigin', $value instanceof Crossorigin ? $value->value : $value);
+        return $this->attr('crossorigin', $value instanceof Crossorigin ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -67,7 +67,7 @@ class Script extends HtmlTag
      */
     public function integrity(string $value): static
     {
-        return $this->attr('integrity', $value);
+        return $this->attr('integrity', $value, escapeKey: false);
     }
 
     /**
@@ -89,7 +89,7 @@ class Script extends HtmlTag
      */
     public function referrerpolicy(ReferrerPolicy|string $value): static
     {
-        return $this->attr('referrerpolicy', $value instanceof ReferrerPolicy ? $value->value : $value);
+        return $this->attr('referrerpolicy', $value instanceof ReferrerPolicy ? $value->value : $value, escapeKey: false);
     }
 
     /**
@@ -98,7 +98,7 @@ class Script extends HtmlTag
      */
     public function type(string $value): static
     {
-        return $this->attr('type', $value);
+        return $this->attr('type', $value, escapeKey: false);
     }
 
     /**
@@ -107,6 +107,6 @@ class Script extends HtmlTag
      */
     public function fetchpriority(string $value): static
     {
-        return $this->attr('fetchpriority', $value);
+        return $this->attr('fetchpriority', $value, escapeKey: false);
     }
 }

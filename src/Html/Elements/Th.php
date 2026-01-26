@@ -27,7 +27,7 @@ class Th extends HtmlTag
             throw new InvalidArgumentException('colspan has to be at least 1');
         }
 
-        return $this->attr('colspan', strval($colspan));
+        return $this->attr('colspan', strval($colspan), escapeKey: false);
     }
 
     /**
@@ -41,7 +41,7 @@ class Th extends HtmlTag
             throw new InvalidArgumentException('rowspan has to be at least 1');
         }
 
-        return $this->attr('rowspan', strval($rowspan));
+        return $this->attr('rowspan', strval($rowspan), escapeKey: false);
     }
 
     /**
@@ -50,7 +50,7 @@ class Th extends HtmlTag
      */
     public function headers(string $value): static
     {
-        return $this->attr('headers', $value);
+        return $this->attr('headers', $value, escapeKey: false);
     }
 
     /**
@@ -60,6 +60,6 @@ class Th extends HtmlTag
      */
     public function scope(string $value): static
     {
-        return $this->attr('scope', $value);
+        return $this->attr('scope', $value, escapeKey: false);
     }
 }

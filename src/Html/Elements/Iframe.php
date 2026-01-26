@@ -23,7 +23,7 @@ class Iframe extends HtmlTag
      */
     public function src(string $src): static
     {
-        return $this->attr('src', $src);
+        return $this->attr('src', $src, escapeKey: false);
     }
 
     /**
@@ -32,7 +32,7 @@ class Iframe extends HtmlTag
      */
     public function loading(Loading|string $loading): static
     {
-        return $this->attr('loading', $loading instanceof Loading ? $loading->value : $loading);
+        return $this->attr('loading', $loading instanceof Loading ? $loading->value : $loading, escapeKey: false);
     }
 
     /**
@@ -41,7 +41,7 @@ class Iframe extends HtmlTag
      */
     public function csp(string $csp): static
     {
-        return $this->attr('csp', $csp);
+        return $this->attr('csp', $csp, escapeKey: false);
     }
 
     /**
@@ -50,7 +50,7 @@ class Iframe extends HtmlTag
      */
     public function height(int|string $height): static
     {
-        return $this->attr('height', (string) $height);
+        return $this->attr('height', (string) $height, escapeKey: false);
     }
 
     /**
@@ -59,7 +59,7 @@ class Iframe extends HtmlTag
      */
     public function width(int|string $width): static
     {
-        return $this->attr('width', (string) $width);
+        return $this->attr('width', (string) $width, escapeKey: false);
     }
 
     /**
@@ -68,7 +68,7 @@ class Iframe extends HtmlTag
      */
     public function name(string $name): static
     {
-        return $this->attr('name', $name);
+        return $this->attr('name', $name, escapeKey: false);
     }
 
     /**
@@ -77,7 +77,7 @@ class Iframe extends HtmlTag
      */
     public function referrerpolicy(ReferrerPolicy|string $referrerpolicy): static
     {
-        return $this->attr('referrerpolicy', $referrerpolicy instanceof ReferrerPolicy ? $referrerpolicy->value : $referrerpolicy);
+        return $this->attr('referrerpolicy', $referrerpolicy instanceof ReferrerPolicy ? $referrerpolicy->value : $referrerpolicy, escapeKey: false);
     }
 
     /**
@@ -86,7 +86,7 @@ class Iframe extends HtmlTag
      */
     public function sandbox(string $sandbox): static
     {
-        return $this->attr('sandbox', $sandbox);
+        return $this->attr('sandbox', $sandbox, escapeKey: false);
     }
 
     /**
@@ -95,6 +95,6 @@ class Iframe extends HtmlTag
      */
     public function srcdoc(string $srcdoc): static
     {
-        return $this->attr('srcdoc', $srcdoc);
+        return $this->attr('srcdoc', $srcdoc, escapeKey: false);
     }
 }

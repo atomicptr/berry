@@ -21,6 +21,6 @@ class Style extends HtmlTag
      */
     public function media(string $value): static
     {
-        return $this->attr('media', $value);
+        return $this->attr('media', $value, escapeKey: false);
     }
 }

@@ -23,7 +23,7 @@ class Video extends HtmlTag
      */
     public function src(string $src): static
     {
-        return $this->attr('src', $src);
+        return $this->attr('src', $src, escapeKey: false);
     }
 
     /**
@@ -50,7 +50,7 @@ class Video extends HtmlTag
      */
     public function height(int $height): static
     {
-        return $this->attr('height', (string) $height);
+        return $this->attr('height', (string) $height, escapeKey: false);
     }
 
     /**
@@ -59,7 +59,7 @@ class Video extends HtmlTag
      */
     public function width(int $width): static
     {
-        return $this->attr('width', (string) $width);
+        return $this->attr('width', (string) $width, escapeKey: false);
     }
 
     /**
@@ -86,7 +86,7 @@ class Video extends HtmlTag
      */
     public function poster(string $poster): static
     {
-        return $this->attr('poster', $poster);
+        return $this->attr('poster', $poster, escapeKey: false);
     }
 
     /**
@@ -95,7 +95,7 @@ class Video extends HtmlTag
      */
     public function preload(Preload|string $preload): static
     {
-        return $this->attr('preload', $preload instanceof Preload ? $preload->value : $preload);
+        return $this->attr('preload', $preload instanceof Preload ? $preload->value : $preload, escapeKey: false);
     }
 
     /**
@@ -104,6 +104,6 @@ class Video extends HtmlTag
      */
     public function crossorigin(Crossorigin|string $crossorigin): static
     {
-        return $this->attr('crossorigin', $crossorigin instanceof Crossorigin ? $crossorigin->value : $crossorigin);
+        return $this->attr('crossorigin', $crossorigin instanceof Crossorigin ? $crossorigin->value : $crossorigin, escapeKey: false);
     }
 }

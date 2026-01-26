@@ -24,7 +24,7 @@ class A extends HtmlTag
      */
     public function href(string $href): static
     {
-        return $this->attr('href', $href);
+        return $this->attr('href', $href, escapeKey: false);
     }
 
     /**
@@ -37,7 +37,7 @@ class A extends HtmlTag
             return $value ? $this->flag('download') : $this;
         }
 
-        return $this->attr('download', $value);
+        return $this->attr('download', $value, escapeKey: false);
     }
 
     /**
@@ -46,7 +46,7 @@ class A extends HtmlTag
      */
     public function rel(Rel|string $rel): static
     {
-        return $this->attr('rel', $rel instanceof Rel ? $rel->value : $rel);
+        return $this->attr('rel', $rel instanceof Rel ? $rel->value : $rel, escapeKey: false);
     }
 
     /**
@@ -55,7 +55,7 @@ class A extends HtmlTag
      */
     public function target(Target|string $target): static
     {
-        return $this->attr('target', $target instanceof Target ? $target->value : $target);
+        return $this->attr('target', $target instanceof Target ? $target->value : $target, escapeKey: false);
     }
 
     /**
@@ -64,7 +64,7 @@ class A extends HtmlTag
      */
     public function type(string $value): static
     {
-        return $this->attr('type', $value);
+        return $this->attr('type', $value, escapeKey: false);
     }
 
     /**
@@ -73,7 +73,7 @@ class A extends HtmlTag
      */
     public function hreflang(string $value): static
     {
-        return $this->attr('hreflang', $value);
+        return $this->attr('hreflang', $value, escapeKey: false);
     }
 
     /**
@@ -82,7 +82,7 @@ class A extends HtmlTag
      */
     public function ping(string $value): static
     {
-        return $this->attr('ping', $value);
+        return $this->attr('ping', $value, escapeKey: false);
     }
 
     /**
@@ -91,6 +91,6 @@ class A extends HtmlTag
      */
     public function referrerpolicy(ReferrerPolicy|string $value): static
     {
-        return $this->attr('referrerpolicy', $value instanceof ReferrerPolicy ? $value->value : $value);
+        return $this->attr('referrerpolicy', $value instanceof ReferrerPolicy ? $value->value : $value, escapeKey: false);
     }
 }
