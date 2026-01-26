@@ -25,8 +25,8 @@ test('test conditionally adding classes', function () {
 
 test('test conditionally adding classes with else', function () {
     expect(div()
-        ->classWhen(true, fn() => 'yes', fn() => 'no')
-        ->classWhen(false, fn() => 'hidden', fn() => 'visible')
+        ->classWhen(true, 'yes', 'no')
+        ->classWhen(false, 'hidden', 'visible')
         ->toString())->toBe('<div class="yes visible"></div>');
 });
 
@@ -36,4 +36,8 @@ test('test removing classes', function () {
 
 test('removes duplicate classes', function () {
     expect(div()->class('a')->class('b')->class('a')->class('a')->toString())->toBe('<div class="a b"></div>');
+});
+
+test('adding same class doesnt create duplicates', function () {
+    expect(div()->class('a b b b c')->toString())->toBe('<div class="a b c"></div>');
 });

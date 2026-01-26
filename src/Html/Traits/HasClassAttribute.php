@@ -32,17 +32,19 @@ trait HasClassAttribute
 
         $this->classes ??= [];
         array_push($this->classes, ...$class);
-        $this->classes = array_values(array_unique(array_map(fn(string $class) => trim($class), $this->classes)));
+        $this->classes = array_values((array_map(fn(string $class) => trim($class), $this->classes)));
 
         return $this;
     }
 
     /**
+     * Adds a class when a condition is true
+     *
      * @param (Closure(): bool)|bool $condition
-     * @param Closure(): (string|string[]) $class
-     * @param (Closure(): (string|string[]))|null $else
+     * @param (Closure(): (string|string[]))|string[]|string $class
+     * @param (Closure(): (string|string[]))|string[]|string|null $else
      */
-    public function classWhen(Closure|bool $condition, Closure $class, ?Closure $else = null): static
+    public function classWhen(Closure|bool $condition, Closure|array|string $class, Closure|array|string|null $else = null): static
     {
         if ($condition instanceof Closure) {
             return $this->classWhen($condition(), $class, $else);
@@ -81,6 +83,6 @@ trait HasClassAttribute
 
     protected function classString(): string
     {
-        return implode(' ', $this->classes ?? []);
+        return implode(' ', array_unique($this->classes ?? []));
     }
 }
