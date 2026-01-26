@@ -11,7 +11,7 @@ class Fragment implements Element, HasChildrenContract
 
     public function toString(): string
     {
-        return implode('', $this->children ?? []);
+        return $this->body;
     }
 
     public function __toString(): string

@@ -8,10 +8,7 @@ use Stringable;
 
 trait HasText
 {
-    /**
-     * @var array<string>|null
-     */
-    protected ?array $children = null;
+    protected string $body = '';
 
     /**
      * Adds a text node to the element (escaped immediately)
@@ -28,8 +25,7 @@ trait HasText
             return $this;
         }
 
-        $this->children ??= [];
-        $this->children[] = Escaper::escape((string) $text);
+        $this->body .= Escaper::escape((string) $text);
 
         return $this;
     }
@@ -49,8 +45,7 @@ trait HasText
             return $this;
         }
 
-        $this->children ??= [];
-        $this->children[] = (string) $text;
+        $this->body .= (string) $text;
 
         return $this;
     }

@@ -7,10 +7,7 @@ use Closure;
 
 trait HasChildren
 {
-    /**
-     * @var array<string>|null
-     */
-    protected ?array $children = null;
+    protected string $body = '';
 
     public function child(Element|Closure|null $child): static
     {
@@ -22,10 +19,7 @@ trait HasChildren
             return $this;
         }
 
-        $this->children ??= [];
-
-        /** @var Element $child */
-        $this->children[] = $child->toString();
+        $this->body .= $child->toString();
 
         return $this;
     }
@@ -54,8 +48,6 @@ trait HasChildren
         if (count($children) === 0) {
             return $this->child($else);
         }
-
-        $this->children ??= [];
 
         foreach ($children as $c) {
             $this->child($c);
