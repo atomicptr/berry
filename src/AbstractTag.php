@@ -14,18 +14,11 @@ abstract class AbstractTag implements Element, HasAttributesContract, HasExtensi
     use HasAttributes;
     use HasExtensionMethods;
 
-    /** @var array<class-string, string> */
-    private static array $tagNameMap = [];
+    protected string $tagName;
 
     public function __construct(string $tagName)
     {
-        // cache tag name per subclass to avoid per-instance property
-        self::$tagNameMap[static::class] = $tagName;
-    }
-
-    protected function tagName(): string
-    {
-        return self::$tagNameMap[static::class] ?? '';
+        $this->tagName = $tagName;
     }
 
     /**
@@ -58,9 +51,15 @@ abstract class AbstractTag implements Element, HasAttributesContract, HasExtensi
 
     protected function renderAttributeList(): string
     {
+        $attributes = $this->getAttributes();
+
+        if (empty($attributes)) {
+            return '';
+        }
+
         $out = '';
 
-        foreach ($this->getAttributes() as $key => $value) {
+        foreach ($attributes as $key => $value) {
             $key = Escaper::escapeAttributeName(strval($key));
 
             // if the string was escaped away, skip it

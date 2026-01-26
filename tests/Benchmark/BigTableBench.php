@@ -79,7 +79,7 @@ class BigTableBench
     }
 
     /**
-     * For comparisons
+     * For comparison, this is probably the ground level for us
      *
      * @param array{rows: int, cols: int} $params
      */
@@ -102,30 +102,6 @@ class BigTableBench
         // for fairness lets also print it out
         ob_start();
         echo $out;
-        ob_end_clean();
-    }
-
-    /**
-     * For comparisons
-     *
-     * @param array{rows: int, cols: int} $params
-     */
-    public function benchPhpEcho(array $params): void
-    {
-        ob_start();
-        echo '<table>';
-
-        for ($row = 0; $row < $params['rows']; $row++) {
-            echo '<tr>';
-
-            for ($col = 0; $col < $params['cols']; $col++) {
-                echo "<td>$row x $col</td>";
-            }
-
-            echo '</tr>';
-        }
-
-        echo '</table>';
         ob_end_clean();
     }
 }

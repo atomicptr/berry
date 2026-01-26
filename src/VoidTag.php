@@ -6,8 +6,12 @@ class VoidTag extends AbstractTag
 {
     public function toString(): string
     {
-        $out = "<{$this->tagName()}";
-        $out .= $this->renderAttributeList();
+        $out = "<{$this->tagName}";
+        
+        if ($this->attributes !== null) {
+            $out .= $this->renderAttributeList();
+        }
+        
         $out .= ' />';
 
         return $out;

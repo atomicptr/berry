@@ -11,13 +11,17 @@ class Tag extends AbstractTag implements HasChildrenContract
 
     public function toString(): string
     {
-        $out = "<{$this->tagName()}";
-        $out .= $this->renderAttributeList();
+        $out = "<{$this->tagName}";
+        
+        if ($this->attributes !== null) {
+            $out .= $this->renderAttributeList();
+        }
+        
         $out .= '>';
 
         $out .= implode('', $this->children ?? []);
 
-        $out .= "</{$this->tagName()}>";
+        $out .= "</{$this->tagName}>";
 
         return $out;
     }
