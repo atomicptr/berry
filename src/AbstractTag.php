@@ -4,7 +4,6 @@ namespace Berry;
 
 use Berry\Contract\HasAttributesContract;
 use Berry\Contract\HasExtensionMethodsContract;
-use Berry\Escaper;
 use Berry\Traits\HasAttributes;
 use Berry\Traits\HasExtensionMethods;
 use Closure;
@@ -60,21 +59,17 @@ abstract class AbstractTag implements Element, HasAttributesContract, HasExtensi
         $out = '';
 
         foreach ($attributes as $key => $value) {
-            $key = Escaper::escapeAttributeName(strval($key));
-
-            // if the string was escaped away, skip it
-            if (strlen($key) === 0) {
+            if (strlen(strval($key)) === 0) {
                 continue;
             }
 
-            // flags
+            // handle flags
             if ($value === true) {
                 $out .= " $key";
                 continue;
             }
 
-            $escaped = Escaper::escape($value);
-            $out .= " {$key}=\"{$escaped}\"";
+            $out .= " {$key}=\"{$value}\"";
         }
 
         return $out;

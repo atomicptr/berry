@@ -83,12 +83,4 @@ trait HasClassAttribute
     {
         return implode(' ', $this->classes ?? []);
     }
-
-    /**
-     * @return string[]
-     */
-    public function getClasses(): array
-    {
-        return $this->classes ?? [];
-    }
 }

@@ -5,7 +5,7 @@ namespace Berry;
 use Berry\Contract\HasChildrenContract;
 use Berry\Traits\HasChildren;
 
-class Fragment implements Element, HasChildrenContract
+final class Fragment implements Element, HasChildrenContract
 {
     use HasChildren;
 
