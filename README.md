@@ -30,9 +30,7 @@ function counterButton(int $value): Element
                 ->attr('hx-post', "$current?counter=$nextValue")
                 ->attr('hx-swap', 'outerHTML')
                 ->text("+ $value")
-        )
-        ->child(hr())
-        ->dump(true);
+        );
 }
 
 // our website layout to wrap around the content

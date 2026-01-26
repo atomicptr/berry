@@ -12,7 +12,6 @@ use function Berry\Html\div;
 use function Berry\Html\h1;
 use function Berry\Html\head;
 use function Berry\Html\header;
-use function Berry\Html\hr;
 use function Berry\Html\html;
 use function Berry\Html\link;
 use function Berry\Html\main;
@@ -37,9 +36,7 @@ function counterButton(int $value): HtmlTag
                 ->attr('hx-post', "$current?counter=$nextValue")
                 ->attr('hx-swap', 'outerHTML')
                 ->text("+ $value")
-        )
-        ->child(hr())
-        ->dump(true);
+        );
 }
 
 // our website layout to wrap around the content
