@@ -11,12 +11,15 @@ trait HasChildren
 
     public function child(Element|Closure|null $child): static
     {
-        if ($child instanceof Closure) {
-            $child = $child();
-        }
-
         if ($child === null) {
             return $this;
+        }
+
+        if ($child instanceof Closure) {
+            $child = $child();
+            if ($child === null) {
+                return $this;
+            }
         }
 
         $this->body .= $child->toString();

@@ -17,12 +17,15 @@ trait HasText
      */
     public function text(Stringable|string|int|float|bool|Closure|null $text): static
     {
-        if ($text instanceof Closure) {
-            $text = $text();
-        }
-
         if ($text === null) {
             return $this;
+        }
+
+        if ($text instanceof Closure) {
+            $text = $text();
+            if ($text === null) {
+                return $this;
+            }
         }
 
         $this->body .= Escaper::escape((string) $text);
@@ -37,12 +40,15 @@ trait HasText
      */
     public function unsafeRaw(Stringable|string|int|float|bool|Closure|null $text): static
     {
-        if ($text instanceof Closure) {
-            $text = $text();
-        }
-
         if ($text === null) {
             return $this;
+        }
+
+        if ($text instanceof Closure) {
+            $text = $text();
+            if ($text === null) {
+                return $this;
+            }
         }
 
         $this->body .= (string) $text;

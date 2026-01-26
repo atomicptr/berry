@@ -3,6 +3,7 @@
 namespace Berry\Tests\Benchmark;
 
 use Berry\Element;
+use Berry\Escaper;
 use Generator;
 
 use function Berry\Html\table;
@@ -91,7 +92,10 @@ class BigTableBench
             $out .= '<tr>';
 
             for ($col = 0; $col < $params['cols']; $col++) {
-                $out .= "<td>$row x $col</td>";
+                // escape to stay fair
+                $content = Escaper::escape("$row x $col");
+
+                $out .= "<td>$content</td>";
             }
 
             $out .= '</tr>';
