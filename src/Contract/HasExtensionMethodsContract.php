@@ -14,5 +14,5 @@ interface HasExtensionMethodsContract
     /**
      * @param mixed[] $arguments
      */
-    public function __call(string $name, array $arguments): static;
+    public function __call(string $name, array $arguments): mixed;
 }

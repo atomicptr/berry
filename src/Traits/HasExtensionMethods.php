@@ -8,12 +8,12 @@ use Closure;
 trait HasExtensionMethods
 {
     /**
-     * @var array<array<string , Closure(static, mixed...): static>>
+     * @var array<array<string , Closure(static, mixed...): mixed>>
      */
     protected static array $extensionMethods = [];
 
     /**
-     * @param (Closure(static, mixed...): static) $extensionMethod
+     * @param (Closure(static, mixed...): mixed) $extensionMethod
      */
     public static function addMethod(string $name, Closure $extensionMethod): void
     {
@@ -24,7 +24,7 @@ trait HasExtensionMethods
     /**
      * @param mixed[] $arguments
      */
-    public function __call(string $name, array $arguments): static
+    public function __call(string $name, array $arguments): mixed
     {
         $func = static::findExtensionMethod($name);
 
@@ -36,7 +36,7 @@ trait HasExtensionMethods
     }
 
     /**
-     * @return (Closure(static, mixed...): static)|null
+     * @return (Closure(static, mixed...): mixed)|null
      */
     protected static function findExtensionMethod(string $name): Closure|null
     {

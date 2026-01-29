@@ -48,3 +48,12 @@ test('Extension Methods', function () {
     // @phpstan-ignore-next-line
     expect(fn() => link()->hxSwap('outerHTML')->toString())->toThrow(BadMethodCallException::class);
 });
+
+test('Extension Method returning something else', function () {
+    AbstractTag::addMethod('strlen', function (AbstractTag $tag): int {
+        return strlen($tag->toString());
+    });
+
+    // @phpstan-ignore-next-line
+    expect(div()->text('Hello, World!')->strlen())->toBe(strlen('<div>Hello, World!</div>'));
+});
