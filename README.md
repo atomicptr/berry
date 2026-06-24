@@ -7,15 +7,34 @@ No more context-switching, just build your HTML templates in PHP.
 Install via composer
 
 ```bash
-$ composer req berry/html
+composer require berry/html
 ```
 
 ```php
 <?php declare(strict_types=1);
 
-// renders a counter button and a debug representation of itself
+require 'vendor/autoload.php';
+
+use Berry\Element;
+use Berry\Html\Enums\Rel;
+use Berry\Html\HtmlTag;
+
+use function Berry\Html\body;
+use function Berry\Html\button;
+use function Berry\Html\div;
+use function Berry\Html\h1;
+use function Berry\Html\head;
+use function Berry\Html\header;
+use function Berry\Html\html;
+use function Berry\Html\link;
+use function Berry\Html\main;
+use function Berry\Html\p;
+use function Berry\Html\script;
+use function Berry\Html\title;
+
+// renders a counter button
 // clicking on the button will send a POST request to the current script
-function counterButton(int $value): Element
+function counterButton(int $value): HtmlTag
 {
     $nextValue = $value + 1;
 
@@ -71,8 +90,6 @@ echo layout(
         ->child(counterButton(1))
 )->toString();
 ```
-
-![Example Screenshot](./.github/example_screenshot.png)
 
 ## Ecosystem
 
