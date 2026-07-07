@@ -2,13 +2,21 @@
 
 No more context-switching, just build your HTML templates in PHP.
 
-## Usage
+Berry is a PHP library for composing correct HTML strings with small element builders.
 
-Install via composer
+It fits especially well with hypermedia-focused applications: render HTML on the server, send HTML over the wire, and let the browser swap it into the page.
+
+## Install
 
 ```bash
 composer require berry/html
 ```
+
+Requires PHP 8.3+.
+
+Docs: https://berry.atomicptr.dev
+
+## Usage
 
 ```php
 <?php declare(strict_types=1);
@@ -32,8 +40,8 @@ use function Berry\Html\p;
 use function Berry\Html\script;
 use function Berry\Html\title;
 
-// renders a counter button
-// clicking on the button will send a POST request to the current script
+// Render a counter button.
+// Clicking it sends a POST request back to the current script.
 function counterButton(int $value): HtmlTag
 {
     $nextValue = $value + 1;
@@ -52,8 +60,8 @@ function counterButton(int $value): HtmlTag
         );
 }
 
-// our website layout to wrap around the content
-// includes picocss and htmx
+// Our page layout around the content.
+// Includes Pico CSS and HTMX.
 function layout(Element $content): Element
 {
     return html()
@@ -70,7 +78,7 @@ function layout(Element $content): Element
             ->child(script()->src('https://cdnjs.cloudflare.com/ajax/libs/htmx/2.0.7/htmx.min.js')));
 }
 
-// if we get a POST render only the counter button and stop
+// For POST requests we only return the button HTML.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $value = $_GET['counter'] ?? '1';
     assert(is_string($value));
@@ -81,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     die();
 }
 
-// and lastly render the normal page template
+// Otherwise render the full page.
 echo layout(
     main()
         ->class('container')
@@ -91,9 +99,26 @@ echo layout(
 )->toString();
 ```
 
+## What Berry Is Good At
+
+- Building HTML views in PHP instead of switching into a template language
+- Server-rendered components and HTML fragments
+- Hypermedia-focused applications with tools like HTMX or Datastar
+- Escaped text and attributes by default
+- Views your editor and PHPStan can understand
+- SVG and XML output
+
+## What Berry Is Not
+
+Berry is not trying to be a frontend framework. There is no client-side runtime or template compiler, just PHP rendering HTML.
+
+## Docs
+
+The full documentation lives at [berry.atomicptr.dev](https://berry.atomicptr.dev).
+
 ## Ecosystem
 
-Some other related packages:
+`berry/html` is the core package. Some optional integrations:
 
 - [berry/symfony](https://github.com/berry-php/symfony) - Symfony integration
 - [berry/htmx](https://github.com/berry-php/htmx) - HTMX integration
