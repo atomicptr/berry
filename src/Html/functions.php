@@ -28,6 +28,8 @@ use Berry\Html\Elements\Dl;
 use Berry\Html\Elements\Dt;
 use Berry\Html\Elements\Em;
 use Berry\Html\Elements\Fieldset;
+use Berry\Html\Elements\Figcaption;
+use Berry\Html\Elements\Figure;
 use Berry\Html\Elements\Footer;
 use Berry\Html\Elements\Form;
 use Berry\Html\Elements\H1;
@@ -298,6 +300,28 @@ function em(): Em
 function fieldset(): Fieldset
 {
     return new Fieldset();
+}
+
+/**
+ * The <figcaption> HTML element represents a caption or legend describing
+ * the rest of the contents of its parent <figure> element, providing
+ * the <figure> an accessible name.
+ * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+ */
+function figcaption(): Figcaption
+{
+    return new Figcaption();
+}
+
+/**
+ * The <figure> HTML element represents self-contained content, potentially with an
+ * optional caption, which is specified using the <figcaption> element. The figure,
+ * its caption, and its contents are referenced as a single unit.
+ * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+ */
+function figure(): Figure
+{
+    return new Figure();
 }
 
 /**
