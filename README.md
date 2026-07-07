@@ -97,6 +97,7 @@ Some other related packages:
 
 - [berry/symfony](https://github.com/berry-php/symfony) - Symfony integration
 - [berry/htmx](https://github.com/berry-php/htmx) - HTMX integration
+- [berry/alpinejs](https://github.com/berry-php/alpinejs) - Alpine.js integration
 
 ## License
 
