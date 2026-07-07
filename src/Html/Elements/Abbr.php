@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <abbr> element represents an abbreviation or acronym.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
  */
-class Abbr extends HtmlTag
+final class Abbr extends HtmlTag
 {
     public function __construct()
     {

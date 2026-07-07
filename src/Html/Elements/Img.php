@@ -12,7 +12,7 @@ use Berry\Html\HtmlVoidTag;
  * The HTML <img> element embeds an image into the document.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
  */
-class Img extends HtmlVoidTag
+final class Img extends HtmlVoidTag
 {
     public function __construct()
     {

@@ -9,7 +9,7 @@ use Closure;
  * The HTML <optgroup> element creates a grouping of options within a <select> element.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
  */
-class Optgroup extends HtmlTag
+final class Optgroup extends HtmlTag
 {
     public function __construct()
     {

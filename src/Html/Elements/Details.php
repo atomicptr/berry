@@ -10,7 +10,7 @@ use Closure;
  * The HTML <details> element creates a disclosure widget in which information is visible only when the widget is toggled into an "open" state.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
  */
-class Details extends HtmlTag
+final class Details extends HtmlTag
 {
     public function __construct()
     {

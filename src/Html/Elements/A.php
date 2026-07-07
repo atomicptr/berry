@@ -11,7 +11,7 @@ use Berry\Html\HtmlTag;
  * The HTML <a> element (or anchor element), with its href attribute, creates a hyperlink to web pages, files, email addresses, locations in the same page, or anything else a URL can address.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
  */
-class A extends HtmlTag
+final class A extends HtmlTag
 {
     public function __construct()
     {

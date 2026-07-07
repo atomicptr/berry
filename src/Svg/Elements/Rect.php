@@ -4,7 +4,7 @@ namespace Berry\Svg\Elements;
 
 use Berry\Svg\SvgTag;
 
-class Rect extends SvgTag
+final class Rect extends SvgTag
 {
     public function __construct()
     {

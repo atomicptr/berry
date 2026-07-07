@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <option> element is used to define an item contained in a <select>, an <optgroup>, or a <datalist> element.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
  */
-class Option extends HtmlTag
+final class Option extends HtmlTag
 {
     public function __construct()
     {

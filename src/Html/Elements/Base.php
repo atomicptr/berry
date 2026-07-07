@@ -9,7 +9,7 @@ use Berry\Html\HtmlVoidTag;
  * The HTML <base> element specifies the base URL to use for all relative URLs in a document.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
  */
-class Base extends HtmlVoidTag
+final class Base extends HtmlVoidTag
 {
     public function __construct()
     {

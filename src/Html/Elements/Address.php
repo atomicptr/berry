@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <address> element indicates that the enclosed HTML provides contact information for a person or people, or for an organization.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
  */
-class Address extends HtmlTag
+final class Address extends HtmlTag
 {
     public function __construct()
     {

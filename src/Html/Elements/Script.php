@@ -10,7 +10,7 @@ use Berry\Html\HtmlTag;
  * The HTML <script> element is used to embed executable code or data; this is typically used to embed or refer to JavaScript code.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
  */
-class Script extends HtmlTag
+final class Script extends HtmlTag
 {
     public function __construct()
     {

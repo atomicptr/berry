@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <b> element is used to draw the reader's attention to the element's contents, which are not otherwise granted special importance.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b
  */
-class B extends HtmlTag
+final class B extends HtmlTag
 {
     public function __construct()
     {

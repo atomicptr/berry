@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <style> element contains style information for a document, or part of a document.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
  */
-class Style extends HtmlTag
+final class Style extends HtmlTag
 {
     public function __construct()
     {

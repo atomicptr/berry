@@ -10,7 +10,7 @@ use Closure;
  * The HTML <ol> element represents an ordered list of items — typically rendered as a numbered list.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
  */
-class Ol extends HtmlTag
+final class Ol extends HtmlTag
 {
     public function __construct()
     {

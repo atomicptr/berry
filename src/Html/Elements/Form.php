@@ -11,7 +11,7 @@ use Berry\Html\HtmlTag;
  * The HTML <form> element represents a document section containing interactive controls for submitting information.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
  */
-class Form extends HtmlTag
+final class Form extends HtmlTag
 {
     public function __construct()
     {

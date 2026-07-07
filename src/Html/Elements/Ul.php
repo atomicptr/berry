@@ -10,7 +10,7 @@ use Closure;
  * The HTML <ul> element represents an unordered list of items.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
  */
-class Ul extends HtmlTag
+final class Ul extends HtmlTag
 {
     public function __construct()
     {

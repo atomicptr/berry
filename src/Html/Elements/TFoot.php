@@ -10,7 +10,7 @@ use Closure;
  * The HTML <tfoot> element defines a set of rows summarizing the columns of the table.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
  */
-class TFoot extends HtmlTag
+final class TFoot extends HtmlTag
 {
     public function __construct()
     {

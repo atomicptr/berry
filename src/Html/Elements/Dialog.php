@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <dialog> element represents a dialog box or other interactive component, such as a dismissible alert, inspector, or subwindow.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
  */
-class Dialog extends HtmlTag
+final class Dialog extends HtmlTag
 {
     public function __construct()
     {

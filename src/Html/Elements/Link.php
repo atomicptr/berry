@@ -11,7 +11,7 @@ use Berry\Html\HtmlVoidTag;
  * The HTML <link> element specifies relationships between the current document and an external resource.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
  */
-class Link extends HtmlVoidTag
+final class Link extends HtmlVoidTag
 {
     public function __construct()
     {

@@ -8,7 +8,7 @@ use Berry\Html\HtmlVoidTag;
  * The HTML <meta> element represents metadata that cannot be represented by other HTML meta-related elements, like <base>, <link>, <script>, <style> or <title>.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
  */
-class Meta extends HtmlVoidTag
+final class Meta extends HtmlVoidTag
 {
     public function __construct()
     {

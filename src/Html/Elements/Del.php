@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <del> element represents a range of text that has been deleted from a document.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
  */
-class Del extends HtmlTag
+final class Del extends HtmlTag
 {
     public function __construct()
     {

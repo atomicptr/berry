@@ -10,7 +10,7 @@ use Berry\Html\HtmlTag;
  * The HTML <audio> element is used to embed sound content in documents.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
  */
-class Audio extends HtmlTag
+final class Audio extends HtmlTag
 {
     public function __construct()
     {

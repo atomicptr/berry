@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <ins> element represents a range of text that has been added to a document.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
  */
-class Ins extends HtmlTag
+final class Ins extends HtmlTag
 {
     public function __construct()
     {

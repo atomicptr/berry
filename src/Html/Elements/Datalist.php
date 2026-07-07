@@ -9,7 +9,7 @@ use Closure;
  * The HTML <datalist> element contains a set of <option> elements that represent the permissible or recommended options available to choose from within other controls.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
  */
-class Datalist extends HtmlTag
+final class Datalist extends HtmlTag
 {
     public function __construct()
     {

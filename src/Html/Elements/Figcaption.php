@@ -10,7 +10,7 @@ use Berry\Html\HtmlTag;
  * the <figure> an accessible name.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
  */
-class Figcaption extends HtmlTag
+final class Figcaption extends HtmlTag
 {
     public function __construct()
     {

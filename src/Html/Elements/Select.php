@@ -10,7 +10,7 @@ use Closure;
  * The HTML <select> element represents a control that provides a menu of options.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
  */
-class Select extends HtmlTag
+final class Select extends HtmlTag
 {
     public function __construct()
     {

@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <progress> element displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
  */
-class Progress extends HtmlTag
+final class Progress extends HtmlTag
 {
     public function __construct()
     {

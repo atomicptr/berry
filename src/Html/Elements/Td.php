@@ -9,7 +9,7 @@ use InvalidArgumentException;
  * The HTML <td> element defines a cell of a table that contains data.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
  */
-class Td extends HtmlTag
+final class Td extends HtmlTag
 {
     public function __construct()
     {

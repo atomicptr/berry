@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <p> element represents a paragraph.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
  */
-class P extends HtmlTag
+final class P extends HtmlTag
 {
     public function __construct()
     {

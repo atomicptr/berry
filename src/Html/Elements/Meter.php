@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <meter> element represents either a scalar value within a known range or a fractional value.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
  */
-class Meter extends HtmlTag
+final class Meter extends HtmlTag
 {
     public function __construct()
     {

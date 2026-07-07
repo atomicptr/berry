@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <span> element is a generic inline container for phrasing content, which does not inherently represent anything.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
  */
-class Span extends HtmlTag
+final class Span extends HtmlTag
 {
     public function __construct()
     {

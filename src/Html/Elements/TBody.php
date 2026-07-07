@@ -10,7 +10,7 @@ use Closure;
  * The HTML <tbody> element encapsulates a set of table rows (<tr> elements), indicating that they comprise the body of the table (<table>).
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
  */
-class TBody extends HtmlTag
+final class TBody extends HtmlTag
 {
     public function __construct()
     {

@@ -10,7 +10,7 @@ use Berry\Html\HtmlTag;
  * The HTML <video> element embeds a media player which supports video playback into the document.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
  */
-class Video extends HtmlTag
+final class Video extends HtmlTag
 {
     public function __construct()
     {

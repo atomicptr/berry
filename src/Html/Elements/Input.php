@@ -11,7 +11,7 @@ use Berry\Html\HtmlVoidTag;
  * The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
  */
-class Input extends HtmlVoidTag
+final class Input extends HtmlVoidTag
 {
     public function __construct()
     {

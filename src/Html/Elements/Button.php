@@ -11,7 +11,7 @@ use Berry\Html\HtmlTag;
  * The HTML <button> element is an interactive element activated by a user with a mouse, keyboard, finger, voice command, or other assistive technology. Once activated, it then performs an action, such as submitting a form or opening a dialog.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
  */
-class Button extends HtmlTag
+final class Button extends HtmlTag
 {
     public function __construct()
     {

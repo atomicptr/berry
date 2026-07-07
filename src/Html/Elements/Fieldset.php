@@ -10,7 +10,7 @@ use Closure;
  * The HTML <fieldset> element is used to group several controls as well as labels (<label>) within a web form.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
  */
-class Fieldset extends HtmlTag
+final class Fieldset extends HtmlTag
 {
     public function __construct()
     {
@@ -61,4 +61,3 @@ class Fieldset extends HtmlTag
         return $this->attr('name', $name, escapeKey: false);
     }
 }
-

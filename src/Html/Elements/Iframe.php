@@ -10,7 +10,7 @@ use Berry\Html\HtmlTag;
  * The HTML <iframe> element represents a nested browsing context, embedding another HTML page into the current one.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
  */
-class Iframe extends HtmlTag
+final class Iframe extends HtmlTag
 {
     public function __construct()
     {

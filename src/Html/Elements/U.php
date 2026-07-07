@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <u> element represents text that should be stylistically different from normal text, typically rendered as underlined.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
  */
-class U extends HtmlTag
+final class U extends HtmlTag
 {
     public function __construct()
     {

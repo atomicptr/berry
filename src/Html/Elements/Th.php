@@ -9,7 +9,7 @@ use InvalidArgumentException;
  * The HTML <th> element defines a cell as header of a group of table cells.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
  */
-class Th extends HtmlTag
+final class Th extends HtmlTag
 {
     public function __construct()
     {

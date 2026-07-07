@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <sup> element specifies inline text which is to be displayed as superscript for solely typographical reasons.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup
  */
-class Sup extends HtmlTag
+final class Sup extends HtmlTag
 {
     public function __construct()
     {

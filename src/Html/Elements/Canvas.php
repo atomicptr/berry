@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <canvas> element is used to draw graphics, on the fly, via JavaScript.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
  */
-class Canvas extends HtmlTag
+final class Canvas extends HtmlTag
 {
     public function __construct()
     {

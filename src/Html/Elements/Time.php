@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <time> element represents a specific period in time.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
  */
-class Time extends HtmlTag
+final class Time extends HtmlTag
 {
     public function __construct()
     {

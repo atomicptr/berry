@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <html> element represents the root (top-level element) of an HTML document, so it is also referred to as the root element. All other elements must be descendants of this element.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
  */
-class Html extends HtmlTag
+final class Html extends HtmlTag
 {
     public function __construct()
     {

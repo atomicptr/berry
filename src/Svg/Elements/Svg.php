@@ -4,7 +4,7 @@ namespace Berry\Svg\Elements;
 
 use Berry\Svg\SvgTag;
 
-class Svg extends SvgTag
+final class Svg extends SvgTag
 {
     private bool $standalone = false;
 

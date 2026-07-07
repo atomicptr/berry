@@ -10,7 +10,7 @@ use Closure;
  * The HTML <thead> element defines a set of rows defining the head of the columns of the table.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead
  */
-class THead extends HtmlTag
+final class THead extends HtmlTag
 {
     public function __construct()
     {

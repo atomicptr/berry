@@ -12,7 +12,7 @@ use Closure;
  * its caption, and its contents are referenced as a single unit.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
  */
-class Figure extends HtmlTag
+final class Figure extends HtmlTag
 {
     public function __construct()
     {

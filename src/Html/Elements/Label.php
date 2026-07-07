@@ -8,7 +8,7 @@ use Berry\Html\HtmlTag;
  * The HTML <label> element represents a caption for an item in a user interface.
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
  */
-class Label extends HtmlTag
+final class Label extends HtmlTag
 {
     public function __construct()
     {
